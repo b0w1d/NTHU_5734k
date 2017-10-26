@@ -13,17 +13,17 @@ We will practice contest every week. And every day during summer/winter vacation
 ### Week 46 Oct. 29 ~ Nov. 05
 Week of Data Structure (0w1)
 ### Week 45 Nov. 05 ~ Nov. 12
-Week of Discrete Mathematics 
+Week of Discrete Mathematics (rareone0602)
 ### Week 44 Nov. 12 ~ Nov. 19
-Week of String Algorithm
+Week of String Algorithm ()
 ### Week 43 Nov. 19 ~ Nov. 26
-Week of Dynamic Programming I
+Week of Dynamic Programming I (0w1)
 ### Week 42 Nov. 26 ~ Dec. 03
-Week of Dynamic Programming II
+Week of Dynamic Programming II (0w1)
 ### Week 41 Dec. 03 ~ Dec. 10
-Week of Graph Algorithm I
+Week of Graph Algorithm I (jjjjj19980806)
 ### Week 40 Dec. 10 ~ Dec. 17
-Week of Graph Algorithm II
+Week of Graph Algorithm II (jjjjj19980806)
 
 ## Milestone 1 Complete Codebook 1st Edition
 
