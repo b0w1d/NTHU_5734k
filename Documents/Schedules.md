@@ -11,9 +11,9 @@ We will practice contest every week. And every day during summer/winter vacation
 ## Milestone 0 Practice & Basic Algorithm Review
 
 ### Week 46 Oct. 29 ~ Nov. 05
-Week of Data Structure
+Week of Data Structure (0w1)
 ### Week 45 Nov. 05 ~ Nov. 12
-Week of Discrete Mathematics
+Week of Discrete Mathematics 
 ### Week 44 Nov. 12 ~ Nov. 19
 Week of String Algorithm
 ### Week 43 Nov. 19 ~ Nov. 26
