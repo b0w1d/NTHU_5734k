@@ -6,9 +6,9 @@ This markdown file is our training schedule.
 
 We will practice contest every week. And every day during summer/winter vacation.
 
-## Training and Milestones
+# Training and Milestones
 
-### Milestone 0 Practice
+## Milestone 0 Practice
 
 ### Week 46 Oct. 29 ~ Nov. 05
 ### Week 45 Nov. 05 ~ Nov. 12
@@ -18,7 +18,7 @@ We will practice contest every week. And every day during summer/winter vacation
 ### Week 41 Dec. 03 ~ Dec. 10
 ### Week 40 Dec. 10 ~ Dec. 17
 
-### Milestone 1 Complete Codebook 1st Edition
+## Milestone 1 Complete Codebook 1st Edition
 
 ### Week 39 Dec. 17 ~ Dec. 24
 ### Week 38 Dec. 24 ~ Dec. 31
@@ -31,7 +31,7 @@ We will practice contest every week. And every day during summer/winter vacation
 ### Week 31 Feb. 11 ~ Feb. 18
 ### Week 30 Feb. 18 ~ Feb. 25
 
-### Milestone 2 
+## Milestone 2 
 
 ### Week 29 Feb. 25 ~ Mar. 04
 ### Week 28 Mar. 04 ~ Mar. 11
@@ -44,7 +44,7 @@ We will practice contest every week. And every day during summer/winter vacation
 ### Week 21 Apr. 22 ~ Apr. 29
 ### Week 20 Apr. 29 ~ May. 06
 
-### Milestone 3 
+## Milestone 3 International Master on CodeForces
 
 ### Week 19 May. 06 ~ May. 13
 ### Week 18 May. 13 ~ May. 20
@@ -57,7 +57,7 @@ We will practice contest every week. And every day during summer/winter vacation
 ### Week 11 Jul. 01 ~ Jul. 08
 ### Week 10 Jul. 08 ~ Jul. 15
 
-### Milestone 4 
+## Milestone 4 
 
 ### Week 09 Jul. 15 ~ Jul. 22
 ### Week 08 Jul. 22 ~ Jul. 29
@@ -70,4 +70,4 @@ We will practice contest every week. And every day during summer/winter vacation
 ### Week 01 Sep. 09 ~ Sep. 16
 ### Week 00 Sep. 17 ~ Sep. 24
 
-### Milestone 5
+## Milestone 5 International Grandmaster on CodeForces
