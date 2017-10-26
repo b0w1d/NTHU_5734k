@@ -15,7 +15,7 @@ In the study group, every week, a speaker is chosen to illustrate the assigned t
 The speaker should prepare __AT LEAST__: 
 
 1. Lecture note writen in latex/markdown
-2. A least ten (classic or technical) problems to do. The speaker should have half of them done by hinself/herself before the lecture.
+2. A least ten (classic or technical) problems to do. The speaker should have half of them done by himself/herself before the lecture.
 3. Reference about the lecture
 4. More material is welcome!
 
@@ -23,7 +23,7 @@ The speaker should prepare __AT LEAST__:
 ### Week 46 Oct. 29 ~ Nov. 05
 Week of Discrete Mathematics - Number Theory by **rareone0602**
 ### Week 45 Nov. 05 ~ Nov. 12
-Week of Discrete Mathematics - Combinatoy by **rareone0602**
+Week of Discrete Mathematics - Combinatory by **rareone0602**
 ### Week 44 Nov. 12 ~ Nov. 19
 Week of Dynamic Programming I by **0w1** 
 ### Week 43 Nov. 19 ~ Nov. 26
@@ -66,7 +66,7 @@ Week of Flow Algorithm by **???**
 ### Week 21 Apr. 22 ~ Apr. 29
 ### Week 20 Apr. 29 ~ May. 06
 
-## Milestone 3 International Master on Codeforces
+## Milestone 3 Become an International Master on Codeforces
 
 ### Week 19 May. 06 ~ May. 13
 ### Week 18 May. 13 ~ May. 20
@@ -92,4 +92,4 @@ Week of Flow Algorithm by **???**
 ### Week 01 Sep. 09 ~ Sep. 16
 ### Week 00 Sep. 17 ~ Sep. 24
 
-## Milestone 5 International Grandmaster on Codeforces
+## Milestone 5 Become an International Grandmaster on Codeforces
