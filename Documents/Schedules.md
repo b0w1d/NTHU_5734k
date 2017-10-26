@@ -10,28 +10,39 @@ We will practice contest every week. And every day during summer/winter vacation
 
 ## Milestone 0 Practice & Basic Algorithm Review
 
+In the study group, every week, a speaker is chosen to illustrate the assigned topic.
+
+The speaker should prepare __AT LEAST__: 
+
+1. Lecture note writen in latex/markdown
+2. A least ten (classic or technical) problems to do. The speaker should have half of them done by hinself/herself before the lecture.
+3. Reference about the lecture
+4. More material is welcome!
+
+
 ### Week 46 Oct. 29 ~ Nov. 05
-Week of Data Structure (0w1)
+Week of Dynamic Programming I (__0w1__)
 ### Week 45 Nov. 05 ~ Nov. 12
-Week of Discrete Mathematics (rareone0602)
+Week of Dynamic Programming II (__0w1__)
 ### Week 44 Nov. 12 ~ Nov. 19
 Week of String Algorithm ()
 ### Week 43 Nov. 19 ~ Nov. 26
-Week of Dynamic Programming I (0w1)
+Week of Data Structure I ()
 ### Week 42 Nov. 26 ~ Dec. 03
-Week of Dynamic Programming II (0w1)
+Week of Data Structure II ()
 ### Week 41 Dec. 03 ~ Dec. 10
-Week of Graph Algorithm I (jjjjj19980806)
+Week of Graph Algorithm I (__jjjjj19980806__)
 ### Week 40 Dec. 10 ~ Dec. 17
-Week of Graph Algorithm II (jjjjj19980806)
+Week of Graph Algorithm II (__jjjjj19980806__)
 
 ## Milestone 1 Complete Codebook 1st Edition
 
 ### Week 39 Dec. 17 ~ Dec. 24
-Week of NP problems
+Week of Discrete Mathematics - Number Theory(__rareone0602__)
 ### Week 38 Dec. 24 ~ Dec. 31
-Week of Game
+Week of Discrete Mathematics - Combinatoy (__rareone0602__)
 ### Week 37 Dec. 31 ~ Jan. 07
+Week of Flow Algorithm()
 ### Week 36 Jan. 07 ~ Jan. 14
 ### Week 35 Jan. 14 ~ Jan. 21
 ### Week 34 Jan. 21 ~ Jan. 28
