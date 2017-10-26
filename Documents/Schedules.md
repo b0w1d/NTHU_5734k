@@ -27,9 +27,9 @@ Week of Dynamic Programming II by **0w1**
 ### Week 44 Nov. 12 ~ Nov. 19
 Week of String Algorithm by **???**
 ### Week 43 Nov. 19 ~ Nov. 26
-Week of Data Structure I by **??**
+Week of Data Structure I by **???**
 ### Week 42 Nov. 26 ~ Dec. 03
-Week of Data Structure II by **??**
+Week of Data Structure II by **???**
 ### Week 41 Dec. 03 ~ Dec. 10
 Week of Graph Algorithm I by **jjjjj19980806**
 ### Week 40 Dec. 10 ~ Dec. 17
@@ -42,8 +42,9 @@ Week of Discrete Mathematics - Number Theory by **rareone0602**
 ### Week 38 Dec. 24 ~ Dec. 31
 Week of Discrete Mathematics - Combinatoy by **rareone0602**
 ### Week 37 Dec. 31 ~ Jan. 07
-Week of Flow Algorithm by **??**
+Week of Flow Algorithm by **???**
 ### Week 36 Jan. 07 ~ Jan. 14
+Week of Computational Geometry by **???**
 ### Week 35 Jan. 14 ~ Jan. 21
 ### Week 34 Jan. 21 ~ Jan. 28
 ### Week 33 Jan. 28 ~ Feb. 04
