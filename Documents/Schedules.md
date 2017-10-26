@@ -21,28 +21,28 @@ The speaker should prepare __AT LEAST__:
 
 
 ### Week 46 Oct. 29 ~ Nov. 05
-Week of Dynamic Programming I (__0w1__)
+Week of Dynamic Programming I by __0w1__
 ### Week 45 Nov. 05 ~ Nov. 12
-Week of Dynamic Programming II (__0w1__)
+Week of Dynamic Programming II by __0w1__
 ### Week 44 Nov. 12 ~ Nov. 19
-Week of String Algorithm ()
+Week of String Algorithm by __??__
 ### Week 43 Nov. 19 ~ Nov. 26
-Week of Data Structure I ()
+Week of Data Structure I __??__
 ### Week 42 Nov. 26 ~ Dec. 03
-Week of Data Structure II ()
+Week of Data Structure II __??__
 ### Week 41 Dec. 03 ~ Dec. 10
-Week of Graph Algorithm I (__jjjjj19980806__)
+Week of Graph Algorithm I by __jjjjj19980806__
 ### Week 40 Dec. 10 ~ Dec. 17
-Week of Graph Algorithm II (__jjjjj19980806__)
+Week of Graph Algorithm II by __jjjjj19980806__
 
 ## Milestone 1 Complete Codebook 1st Edition
 
 ### Week 39 Dec. 17 ~ Dec. 24
-Week of Discrete Mathematics - Number Theory(__rareone0602__)
+Week of Discrete Mathematics - Number Theory by __rareone0602__
 ### Week 38 Dec. 24 ~ Dec. 31
-Week of Discrete Mathematics - Combinatoy (__rareone0602__)
+Week of Discrete Mathematics - Combinatoy by __rareone0602__
 ### Week 37 Dec. 31 ~ Jan. 07
-Week of Flow Algorithm()
+Week of Flow Algorithm by __??__
 ### Week 36 Jan. 07 ~ Jan. 14
 ### Week 35 Jan. 14 ~ Jan. 21
 ### Week 34 Jan. 21 ~ Jan. 28
