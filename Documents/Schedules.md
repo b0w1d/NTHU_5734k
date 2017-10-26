@@ -4,9 +4,11 @@ This markdown file is our training schedule.
 
 ## Outline 
 
-We will practice contest every week. And every day during summer vacation.
+We will practice contest every week. And every day during summer/winter vacation.
 
-## Training and Practice
+## Training and Milestones
+
+### Milestone 0 Practice
 
 ### Week 46 Oct. 29 ~ Nov. 05
 ### Week 45 Nov. 05 ~ Nov. 12
@@ -15,6 +17,9 @@ We will practice contest every week. And every day during summer vacation.
 ### Week 42 Nov. 26 ~ Dec. 03
 ### Week 41 Dec. 03 ~ Dec. 10
 ### Week 40 Dec. 10 ~ Dec. 17
+
+### Milestone 1 Complete Codebook 1st Edition
+
 ### Week 39 Dec. 17 ~ Dec. 24
 ### Week 38 Dec. 24 ~ Dec. 31
 ### Week 37 Dec. 31 ~ Jan. 07
@@ -25,6 +30,9 @@ We will practice contest every week. And every day during summer vacation.
 ### Week 32 Feb. 04 ~ Feb. 11
 ### Week 31 Feb. 11 ~ Feb. 18
 ### Week 30 Feb. 18 ~ Feb. 25
+
+### Milestone 2 
+
 ### Week 29 Feb. 25 ~ Mar. 04
 ### Week 28 Mar. 04 ~ Mar. 11
 ### Week 27 Mar. 11 ~ Mar. 18
@@ -35,6 +43,9 @@ We will practice contest every week. And every day during summer vacation.
 ### Week 22 Apr. 15 ~ Apr. 22
 ### Week 21 Apr. 22 ~ Apr. 29
 ### Week 20 Apr. 29 ~ May. 06
+
+### Milestone 3 
+
 ### Week 19 May. 06 ~ May. 13
 ### Week 18 May. 13 ~ May. 20
 ### Week 17 May. 20 ~ May. 27
@@ -45,6 +56,9 @@ We will practice contest every week. And every day during summer vacation.
 ### Week 12 Jun. 24 ~ Jul. 01
 ### Week 11 Jul. 01 ~ Jul. 08
 ### Week 10 Jul. 08 ~ Jul. 15
+
+### Milestone 4 
+
 ### Week 09 Jul. 15 ~ Jul. 22
 ### Week 08 Jul. 22 ~ Jul. 29
 ### Week 07 Jul. 29 ~ Aug. 05
@@ -54,4 +68,6 @@ We will practice contest every week. And every day during summer vacation.
 ### Week 03 Aug. 26 ~ Sep. 02
 ### Week 02 Sep. 02 ~ Sep. 09
 ### Week 01 Sep. 09 ~ Sep. 16
+### Week 00 Sep. 17 ~ Sep. 24
 
+### Milestone 5
