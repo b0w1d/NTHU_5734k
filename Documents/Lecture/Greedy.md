@@ -1,4 +1,4 @@
-# Week of mathematics - Number Theory
+# Week of Greedy
 
 ## Outline
 
@@ -11,4 +11,4 @@
 
 ## Reference
 
-+ Concrete Mathematics: A Foundation for Computer Science, by Ronald Graham, Donald Knuth, and Oren Patashnik
++ 
