@@ -1,4 +1,4 @@
-# Week of mathematic - Number Theory
+# Week of mathematics - Number Theory
 
 ## Outline
 
