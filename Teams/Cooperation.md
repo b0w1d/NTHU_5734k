@@ -3,9 +3,9 @@
 
 | Friends of ___ |        0w1         |   jjjjj19980806    |   rareone0602      |
 |----------------|:------------------:|:------------------:|:------------------:|
-| kemono friends | S                  | A                  | A                  |
+| kemono friends |S                   |A                   |A                   
 | dp             |-                   |-                   |-                   |
-| Number Theory  |-                   |-                   |C                   |
+| Number Theory  |-                   |-                   |-                   |
 | Combinatorics  |-                   |-                   |-                   |
 | Games          |-                   |-                   |-                   |
 | Flow           |-                   |-                   |-                   |
