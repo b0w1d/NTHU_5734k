@@ -3,7 +3,7 @@
 
 | Friends of ___ |        0w1         |   jjjjj19980806    |   rareone0602      |
 |----------------|:------------------:|:------------------:|:------------------:|
-| kemono friends |S                   |A                   |A                   
+| kemono         |S                   |A                   |A                   
 | dp             |-                   |-                   |-                   |
 | Number Theory  |-                   |-                   |-                   |
 | Combinatorics  |-                   |-                   |-                   |
