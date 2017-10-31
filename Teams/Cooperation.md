@@ -10,11 +10,12 @@
 | Games          | -                  | -                  | A                  |
 | Flow           | -                  | -                  | C                  |
 | Data Structure | -                  | -                  | C                  |
-| Tree problem   | -                  | -                  | -                  |
+| Tree problem   | -                  | -                  | C                  |
 | Graph modeling | -                  | -                  | A                  |
 | String         | -                  | -                  | B                  |
-| Implementation | -                  | -                  | F                  |
-
+| Implementation | -                  | -                  | C                  |
+| Geometry       | -                  | -                  | C                  |
+| Math Property  | -                  | -                  | A                  |
 
 + S : I'm the one who should deal with the field (A row should have only one S, may with multiple A, B, C and F.)
 + A : I can deal with it well.
