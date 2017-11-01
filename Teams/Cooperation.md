@@ -14,7 +14,7 @@
 | String         | B                  | -                  | B                  |
 | Implementation | A                  | -                  | C                  |
 | Geometry       | C                  | -                  | C                  |
-| Math Property  | F                  | -                  | A                  |
+| Greedy         | F                  | -                  | A                  |
 
 + S : I'm the one who should deal with the field (A row should have only one S, may with multiple A, B, C and F.)
 + A : I can deal with it well.
@@ -22,4 +22,5 @@
 + C : I may have the ability to solve a simple one.
 + F : Give up.
 
-1. Combinatorics problems includes dp - combinatoric problems.f
+1. Combinatorics problems includes dp - combinatoric problems
+2. Greedy includes math property.
