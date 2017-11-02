@@ -1,6 +1,6 @@
 # Problem List
 
-This is a co-written problem list, it's 
+This is a co-writting problem list. We may refer to [An awesome list for competitive programming!](https://github.com/lnishan/awesome-competitive-programming).
 
 ## Number Theory
 | Problem        | 0w1    | jjj    | rar    | Description      |
