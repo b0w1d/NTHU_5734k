@@ -4,17 +4,17 @@
 | Friends of ___ | 0w1                | jjj                | rar                |
 | -------------- |:------------------:|:------------------:|:------------------:|
 | DP             | S                  | B                  | A                  |
-| Number Theory  | C                  | -                  | A                  |
-| Combinatorics  | B                  | -                  | A                  |
-| Games          | B                  | -                  | A                  |
-| Flow           | A                  | -                  | C                  |
-| Data Structure | A                  | -                  | C                  |
-| Tree problem   | B                  | -                  | C                  |
-| Graph modeling | B                  | -                  | A                  |
-| String         | B                  | -                  | B                  |
-| Implementation | A                  | -                  | C                  |
-| Geometry       | C                  | -                  | C                  |
-| Greedy         | F                  | -                  | A                  |
+| Number Theory  | C                  | B                  | A                  |
+| Combinatorics  | B                  | B                  | A                  |
+| Games          | B                  | B                  | A                  |
+| Flow           | A                  | B                  | C                  |
+| Data Structure | A                  | B                  | C                  |
+| Tree problem   | B                  | B                  | C                  |
+| Graph modeling | B                  | B                  | A                  |
+| String         | B                  | B                  | B                  |
+| Implementation | A                  | C                  | C                  |
+| Geometry       | C                  | C                  | C                  |
+| Greedy         | F                  | B                  | A                  |
 
 + S : I'm the one who should deal with the field (A row should have only one S, may with multiple A, B, C and F.)
 + A : I can deal with it well.
