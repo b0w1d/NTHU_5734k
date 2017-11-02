@@ -5,7 +5,7 @@ This is a co-written problem list, it's
 ## Number Theory
 | Problem        | 0w1    | jjj    | rar    | Description      |
 | -------------- |:------:|:------:|:------:|:----------------:|
-| [CF 830C]((http://codeforces.com/problemset/problem/830/C)) | -      | -      | -      |                  |
+| [CF 830C](http://codeforces.com/problemset/problem/830/C) | -      | -      | -      |                  |
 | [CF 584 prob D](http://codeforces.com/contest/584/problem/D) | -      | -      | -      |                  |
 | [CF 615D](http://codeforces.com/problemset/problem/615/D) | -      | -      | -      |                  |
 | [CF 776E](http://codeforces.com/problemset/problem/776/E) | -      | -      | -      |                  |
