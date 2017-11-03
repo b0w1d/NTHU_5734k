@@ -5,23 +5,25 @@ This is a co-writting problem list. We may refer to [An awesome list for competi
 
 ## Math
 ### Number Theory
-| Problem        | 0w1    | jjj    | rar    | Description      |
-| -------------- |:------:|:------:|:------:|:----------------:|
-| [CF 830C](http://codeforces.com/problemset/problem/830/C) | -      | -      | -      |                  |
-| [CF 584 prob D](http://codeforces.com/contest/584/problem/D) | -      | -      | -      |                  |
-| [CF 615D](http://codeforces.com/problemset/problem/615/D) | -      | -      | -      |                  |
-| [CF 776E](http://codeforces.com/problemset/problem/776/E) | -      | -      | -      |                  |
-| [POJ 2480](http://poj.org/problem?id=2480) | -      | -      | -      |                  |
-| [Yuki 575](https://yukicoder.me/problems/no/575) | -      | -      | -      |                  |
-| [UVa 10990](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=21&page=show_problem&problem=1931) | -      | -      | -      |                  |
-| [POJ 2417](http://poj.org/problem?id=2417) | -      | -      | -      |                  |
+| Problem                                    | 0w1    | jjj    | rar    | Description                         |
+| ------------------------------------------ |:------:|:------:|:------:|:-----------------------------------:|
+| [CF 830C](https://goo.gl/7yDpCN)           | -      | -      | -      |                                     |
+| [CF 584 prob D](https://goo.gl/t9Yvkr)     | -      | -      | -      |                                     |
+| [CF 615D](https://goo.gl/dGTX2L)           | -      | -      | -      |                                     |
+| [CF 776E](https://goo.gl/CiN5P6)           | -      | -      | -      |                                     |
+| [POJ 2480](https://goo.gl/YVWxhb)          | -      | -      | -      |                                     |
+| [Yuki 575](https://goo.gl/1Tpvkf)          | -      | -      | -      |                                     |
+| [UVa 10990](https://goo.gl/zX3RGg)         | -      | -      | -      |                                     |
+| [POJ 2417](https://goo.gl/upYkQ5)          | -      | -      | -      |                                     |
 
 ### Combinatorics
-| Problem        | 0w1    | jjj    | rar    | Description      |
-| -------------- |:------:|:------:|:------:|:----------------:|
-| [Yuki 125](https://yukicoder.me/problems/no/125)     | v | | | Pólya enumeration theorem|
-|                |        |        |        |                  |
-|                |        |        |        |                  |
+| Problem                                    | 0w1    | jjj    | rar    | Description                         |
+| ------------------------------------------ |:------:|:------:|:------:|:-----------------------------------:|
+| [Yuki 125](https://goo.gl/Cf8mVc)          | v      | -      | -      | Pólya enumeration theorem           |
+|                                            | -      | -      | -      |                                     |
+|                                            | -      | -      | -      |                                     |
+
+<!-- google URL Shortener : https://goo.gl -->
 
 - v : AC
 - **v** : 精神AC
