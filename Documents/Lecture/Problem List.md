@@ -21,7 +21,7 @@ This is a co-writting problem list. We may refer to [An awesome list for competi
 | -------------- |:------:|:------:|:------:|:----------------:|
 | [Yuki 125](https://yukicoder.me/problems/no/125)     | v | | |
 |                |        |        |        |                  |
-| -------------- |        |        |        |                  |
+|                |        |        |        |                  |
 
 - v : AC
 - **v** : 精神AC
