@@ -7,14 +7,14 @@ This is a co-writting problem list. We may refer to [An awesome list for competi
 ### Number Theory
 | Problem                                    | 0w1    | jjj    | rar    | Description                         |
 | ------------------------------------------ |:------:|:------:|:------:|:-----------------------------------:|
-| [CF 830C](https://goo.gl/7yDpCN)           | -      | -      | -      |                                     |
-| [CF 584 prob D](https://goo.gl/t9Yvkr)     | -      | -      | -      |                                     |
+| [CF 830C](https://goo.gl/7yDpCN)           | -      | -      | -      | floor(n/a) hasonly O(sqrt(n)) terms |
+| [CF 584D](https://goo.gl/t9Yvkr)           | -      | -      | -      | Distance between primes are small   |
 | [CF 615D](https://goo.gl/dGTX2L)           | -      | -      | -      |                                     |
 | [CF 776E](https://goo.gl/CiN5P6)           | -      | -      | -      |                                     |
-| [POJ 2480](https://goo.gl/YVWxhb)          | -      | -      | -      |                                     |
-| [Yuki 575](https://goo.gl/1Tpvkf)          | -      | -      | -      |                                     |
+| [POJ 2480](https://goo.gl/YVWxhb)          | -      | -      | -      | Euler phi                           |
+| [Yuki 575](https://goo.gl/1Tpvkf)          | -      | -      | -      | Strling formula                     |
 | [UVa 10990](https://goo.gl/zX3RGg)         | -      | -      | -      |                                     |
-| [POJ 2417](https://goo.gl/upYkQ5)          | -      | -      | -      |                                     |
+| [POJ 2417](https://goo.gl/upYkQ5)          | -      | -      | -      | Miller Rabin and Pollard's rho      |
 
 ### Combinatorics
 | Problem                                    | 0w1    | jjj    | rar    | Description                         |
