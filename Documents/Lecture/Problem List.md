@@ -19,8 +19,8 @@ This is a co-writting problem list. We may refer to [An awesome list for competi
 ### Combinatorics
 | Problem        | 0w1    | jjj    | rar    | Description      |
 | -------------- |:------:|:------:|:------:|:----------------:|
-| [Yuki 125](https://yukicoder.me/problems/no/125)     | v | | |
-|                |        |        |        |                  |
+| [Yuki 125](https://yukicoder.me/problems/no/125)     | v | | | Pólya enumeration theorem|
+|                |        |        |        |                  |
 |                |        |        |        |                  |
 
 - v : AC
