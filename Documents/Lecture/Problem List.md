@@ -2,7 +2,9 @@
 
 This is a co-writting problem list. We may refer to [An awesome list for competitive programming!](https://github.com/lnishan/awesome-competitive-programming).
 
-## Number Theory
+
+## Math
+### Number Theory
 | Problem        | 0w1    | jjj    | rar    | Description      |
 | -------------- |:------:|:------:|:------:|:----------------:|
 | [CF 830C](http://codeforces.com/problemset/problem/830/C) | -      | -      | -      |                  |
@@ -14,6 +16,12 @@ This is a co-writting problem list. We may refer to [An awesome list for competi
 | [UVa 10990](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=21&page=show_problem&problem=1931) | -      | -      | -      |                  |
 | [POJ 2417](http://poj.org/problem?id=2417) | -      | -      | -      |                  |
 
+### Combinatorics
+| Problem        | 0w1    | jjj    | rar    | Description      |
+| -------------- |:------:|:------:|:------:|:----------------:|
+| [Yuki 125](https://yukicoder.me/problems/no/125)     | v | | |
+|                |        |        |        |                  |
+| -------------- |        |        |        |                  |
 
 - v : AC
 - **v** : 精神AC
