@@ -19,3 +19,7 @@ The directory contains our solutions of practiced contest
 - jjjjj19980806
 
 
+## Todos
+1. Detailed Schedule
+1. partial deadline of codebook
+1. upload .vimrc
