@@ -3,7 +3,7 @@
 
 | Friends of ___ | 0w1                | jjj                | rar                |
 | -------------- |:------------------:|:------------------:|:------------------:|
-| DP             | S                  | B                  | A                  |
+| DP             | S                  | B                  | B                  |
 | Number Theory  | C                  | B                  | A                  |
 | Combinatorics  | B                  | B                  | A                  |
 | Games          | B                  | B                  | A                  |
