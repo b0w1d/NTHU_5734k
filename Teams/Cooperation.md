@@ -11,8 +11,8 @@
 | Data Structure  | A                  | B                  | C                  |
 | Tree problem    | B                  | B                  | C                  |
 | Graph modeling  | B                  | B                  | A                  |
-| String          | B                  | B                  | B                  |
-| Implementation  | A                  | C                  | C                  |
+| String          | B                  | C                  | B                  |
+| Implementation  | A                  | B                  | C                  |
 | Geometry        | C                  | C                  | C                  |
 | Greedy Property | F                  | B                  | A                  |
 
