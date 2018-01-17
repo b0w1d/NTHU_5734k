@@ -20,17 +20,17 @@ We use spaces for indentation. Do not use tabs in your code. You should set your
 
 
 # Indexing
-Use half open interval as default. If you write a function with args (begin, end), it should process [begin, end), otherwise you should tell your teammate or write a comment.
+Use half open interval as default. If you write a function with args (begin, end), it should process [begin, end), otherwise you should tell your teammates or write a comment.
 
 # Naming
 
 1. function and variable names should start from lowercase
 1. Use 'cnt' as abbreviation of count, e.g. 'cnt', 'ball\_cnt'
-1. Type a '\_' to separate words in a variable, e.g. 'class\_count'
+1. Type a '\_' to separate words in a variable, e.g. 'cow\_color'
 1. Use a term if term exists
 1. Use i, j, k ONLY in loop iteration
-1. Use variable name in problem statement as default, so that your team members can rapidly understand what you are typing.
-1. Programs functionally, avoid objective programming. But if it's necessary, for instance, flow problems, use uppercase for the first character of all object names and class names, e.g. Flow Flow_Solver;
+1. Use variable name in problem statement as default, so that your teammates can rapidly understand what you are typing.
+1. Program functionally, avoid objective programming. But if it's necessary, for instance, flow problems, object names and class names should start with uppercase, e.g. Flow Flow_solver;
 
 # Geometry
 
