@@ -34,4 +34,4 @@ Use half open interval as default. If you write a function with args (begin, end
 
 # Geometry
 
-1. Use `complex<double>` as a point in 2d
+
