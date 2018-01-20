@@ -17,8 +17,11 @@ This is a co-writting problem list. We may refer to [An awesome list for competi
 | [POJ 3709](https://goo.gl/c48oQr)          | -      | -      | v      | Convex Hull With Deque              |
 | [POJ 3017](https://goo.gl/5nDgqG)          | -      | -      | -      | Monotonic deque                     |
 
+### Binary Search
+| Problem                                    | 0w1    | jjj    | rar    | Description                         |
+| ------------------------------------------ |:------:|:------:|:------:|:-----------------------------------:|
+| [POJ 3111](http://poj.org/problem?id=3111) | -      | v      | -      | maximum average                     |
 
-## Math
 ### Number Theory
 | Problem                                    | 0w1    | jjj    | rar    | Description                         |
 | ------------------------------------------ |:------:|:------:|:------:|:-----------------------------------:|
