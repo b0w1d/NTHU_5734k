@@ -20,7 +20,7 @@ This is a co-writting problem list. We may refer to [An awesome list for competi
 ### Binary Search
 | Problem                                    | 0w1    | jjj    | rar    | Description                         |
 | ------------------------------------------ |:------:|:------:|:------:|:-----------------------------------:|
-| [POJ 3111](http://poj.org/problem?id=3111) | -      | v      | -      | maximum average                     |
+| [POJ 3111](http://poj.org/problem?id=3111) | -      | v      | v      | maximum average                     |
 
 ### Number Theory
 | Problem                                    | 0w1    | jjj    | rar    | Description                         |
@@ -33,7 +33,7 @@ This is a co-writting problem list. We may refer to [An awesome list for competi
 | [Yuki 575](https://goo.gl/1Tpvkf)          | v      | -      | v      | Strling formula                     |
 | [UVa 10990](https://goo.gl/zX3RGg)         | -      | -      | -      |                                     |
 | [POJ 2417](https://goo.gl/upYkQ5)          | -      | -      | -      | Miller Rabin and Pollard's rho      |
-| [CF 915G] (https://goo.gl/nkppcH)          | -      | -      | -      | Möbius function (or In-Exclusion)   |
+| [CF 915G](https://goo.gl/nkppcH)           | -      | -      | v      | Möbius function (or In-Exclusion)   |
 
 ### Combinatorics
 | Problem                                    | 0w1    | jjj    | rar    | Description                         |
