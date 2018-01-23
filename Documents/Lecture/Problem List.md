@@ -34,6 +34,8 @@ This is a co-writting problem list. We may refer to [An awesome list for competi
 | [UVa 10990](https://goo.gl/zX3RGg)         | -      | -      | -      |                                     |
 | [POJ 2417](https://goo.gl/upYkQ5)          | -      | -      | -      | Miller Rabin and Pollard's rho      |
 | [CF 915G](https://goo.gl/nkppcH)           | -      | -      | v      | Möbius function (or In-Exclusion)   |
+| [CF 912E](https://goo.gl/DNtvmv)           | -      | -      | v      | Meet-in-the-middle                  |
+
 
 ### Combinatorics
 | Problem                                    | 0w1    | jjj    | rar    | Description                         |
