@@ -5,7 +5,7 @@
 | --------------- |:------------------:|:------------------:|:------------------:|
 | DP & skills     | S                  | B                  | B                  |
 | Number Theory   | C                  | B                  | A                  |
-| Combinatorics   | B                  | B                  | A                  |
+| Combinatorics   | B                  | A                  | A                  |
 | Games           | B                  | B                  | A                  |
 | Flow            | A                  | B                  | C                  |
 | Data Structure  | A                  | B                  | C                  |
