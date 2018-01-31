@@ -44,8 +44,14 @@ This is a co-writting problem list. We may refer to [An awesome list for competi
 |                                            | -      | -      | -      |                                     |
 |                                            | -      | -      | -      |                                     |
 
+### Data Structures
+| Problem                                    | 0w1    | jjj    | rar    | Description                         |
+| ------------------------------------------ |:------:|:------:|:------:|:-----------------------------------:|
+| [CF 786B](https://goo.gl/UutvLT)           | v      | -      | v      | Dijsktra on a segment tree          |
+|                                            | -      | -      | -      |                                     |
+|                                            | -      | -      | -      |                                     |
 
-
+http://codeforces.com/contest/786/problem/B
 <!-- google URL Shortener : https://goo.gl -->
 
 - v : AC
