@@ -7,15 +7,12 @@ This is a co-writting problem list. We may refer to [An awesome list for competi
 | Problem                                    | 0w1    | jjj    | rar    | Description                         |
 | ------------------------------------------ |:------:|:------:|:------:|:-----------------------------------:|
 | [Yuki 42](https://goo.gl/LuHy7W)           | v      | -      | -      | Lagrange's interpolation            |
-
-### DP with linear Data Structure
-| Problem                                    | 0w1    | jjj    | rar    | Description                         |
-| ------------------------------------------ |:------:|:------:|:------:|:-----------------------------------:|
 | [POJ 3061](https://goo.gl/C5dVkb)          | -      | -      | v      | Sliding Window                      |
 | [POJ 3320](https://goo.gl/Nt7TzJ)          | -      | -      | v      | Sliding Window                      |
 | [CF 251A](https://goo.gl/FUmQhu)           | -      | -      | v      | Sliding Window                      |
 | [POJ 3709](https://goo.gl/c48oQr)          | -      | -      | v      | Convex Hull With Deque              |
 | [POJ 3017](https://goo.gl/5nDgqG)          | -      | -      | -      | Monotonic deque                     |
+| [UVa 11264](https://goo.gl/tqsFPN)         | -      | -      | v      | naive dp or O(N) greedy             |
 
 ### Binary Search
 | Problem                                    | 0w1    | jjj    | rar    | Description                         |
