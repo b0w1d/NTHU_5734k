@@ -12,5 +12,5 @@ LL CRT(vector<PLL> &eqs) {
     ni = P.second, ns = prod / ni;
     (ans += ns * P.first % prod * exd_gcd(ni, ns).second) %= prod;
   }
-  return (LL) (ans + prod) % prod;
+  return (ans + prod) % prod;
 }
