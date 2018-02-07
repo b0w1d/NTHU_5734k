@@ -1,7 +1,11 @@
-#include <iostream>
-#include <algorithm>
-#include <cmath>
+#include <bits/stdc++.h>
 typedef long long LL;
+
+LL __gcd(LL a, LL b) {
+  if (!a or !b) return a|b;
+  return __gcd(b, a % b);
+}
+
 
 LL mul(LL x, LL y, LL mod) {
   LL ans = 0, m = x % mod, s = 0, sgn = (x > 0) xor (y > 0)? -1: 1;
@@ -37,31 +41,31 @@ bool miller_rabin(LL n, int s = 7) {
   }
   return 1;
 }
-/*
+
 LL f(LL x, LL n) {
   return (mul(x, x, n) + 1) % n;
 }
 LL pollard_rho(LL n) {
-  if (!(n&1)) return 2;
+  if (n&1^1) return 2;
   while (true) {
-    LL y = 2, x = rand()%(n-1)+1, res = 1;
-    for(int sz=2; res==1; sz*=2) {
-      for(int i=0; i<sz && res<=1; i++) {
-        x = f(x, n);
-        res = __gcd(abs(x-y), n);
-      }
+    LL x = rand() % (n - 1) + 1, y = 2, d = 1;
+    for (LL sz = 2; d <= 1; sz <<= 1) {
+      for (int i = 0; i < sz and d <= 1; ++i) 
+        x = f(x, n), d = __gcd(abs(x - y), n);
       y = x;
     }
-    if (res!=0 && res!=n) return res;
+    if (n - d) return d;
   }
 }
-*/
-const int M = 100000001;
-LL divisor[M] = {0};
+
 int main() {
-  for (int p = 2; p < M; ++p) if (not divisor[p]) for (LL N = p; N < M; N += p) divisor[N] = p; 
-  for (int p = 2; p < M; ++p) {
-    if (miller_rabin(p) xor p == divisor[p]) printf("p: %d with divisorisor %lld\n", p, divisor[p]);
-    if (p % 10000000 == 0) printf("test completed under %d\n", p);
+  LL a, d;
+  int n; scanf("%d", &n);
+  while (n--) {
+    scanf("%lld", &a);
+    bool found = 0;
+    for (int i = 2; i < std::min(n, 1<<20) and not found; ++i) if (a % i == 0) found = 1, printf("%d\n", i);
+    if (miller_rabin(a)) puts("Prime");
+    else d = pollard_rho(a), printf("%lld\n", std::min(d, a / d));
   }
 }
