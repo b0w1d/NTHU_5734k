@@ -23,10 +23,10 @@ bool witness(LL a, LL n, LL u, int t) {
 const LL wits[7] = {2, 325, 9375, 28178, 450775, 9780504, 1795265022};
 bool miller_rabin(LL n, int s = 7) {
   if (n < 2) return 0;
-  if (!(n & 1)) return n == 2;
+  if (n&1^1) return n == 2;
   LL u = n - 1, t = 0;
   // n == u << t
-  while (!(u&1)) u >>= 1, ++t;
+  while (u&1^1) u >>= 1, ++t;
   while (s--) {
     LL a = wits[s] % n;
     if (a and witness(a, n, u, t)) return 0;
