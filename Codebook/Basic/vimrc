@@ -1,22 +1,2 @@
-if has("syntax")
-    syntax on
-endif
-set nu
-set shiftwidth=2
-set smartindent
-set tabstop=2
-set expandtab
-set cursorline
-set autoindent
-set autoread
-set smartcase
-set hlsearch
-set incsearch
-set mouse=a
-set ruler
-
-set expandtab
-
-if filereadable("/etc/vim/vimrc.local")
-    source /etc/vim/vimrc.local
-endif
+syntax on
+set nu ai bs=2 sw=2 et ve=all cb=unnamed mouse=a ruler incsearch
