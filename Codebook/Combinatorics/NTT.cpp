@@ -24,38 +24,36 @@
    26   67108864    469762049  7    3
    27   134217728   2013265921 15   31 */
 LL root = 10, p = 785433, lg = 18, a = 3;
-LL pow(LL x, int b) {
+LL powM(LL x, int b) {
   LL s = 1, m = x % p;
   for (; b; m = m * m % p, b >>= 1)
     if (b&1) s = s * m % p;
   return s;
 }
-vector<LL> NTT(vector<LL> P, bool inv=0) {
+vector<LL> NTT(vector<LL> P, bool inv = 0) {
   int n = P.size();
-  for (int j = 1, i = 0; j < n - 1; j++) {
+  for (int j = 1, i = 0; j < n - 1; ++j) {
     for (int k = n >> 1; k > (i ^= k); k >>= 1);
     if (j < i) swap(a[i], a[j]);
   } //bit reverse
-  LL root = pow(root, a * (inv? p - 2: 1));
-  //root has order (1<<lg)
-  for (int i = 1; i <= lg; ++i) {
-    LL wm = powMod( root , 1<< ( MAXlg - i ),prime);//order is (1<<i)
-    for(int k = 0 ; k < (1 << lgOfP); k += (1 << i)){
+  LL w = powM(root, a * (inv? p - 2: 1));
+  for (LL i = 0; i <= lg; ++i) {
+    LL wm = powM(w, 1 << (lg - i - 1));
+    for (int k = 0; k < (1<<lg); k += 1 << i) {
       LL base = 1;
-      for(int j = 0 ; j < 1<<(i-1) ;++j){
-        LL t = base * pointP[ k + j + (1 << ( i - 1 ))] % prime,
-        u = pointP[k + j] % prime;
-        base = base * wm % prime;
-        P[k + j] = ( u + t ) % prime;
-        P[k + j + (1 << ( i - 1 ))] = ( u - t + prime ) % prime;
+      for (int j = 0; j < 1 << i - 1; ++j) {
+        LL t = base * P[k + j + (1 << i - 1)] % p;
+        LL u = P[k + j] % p;
+        P[k + j] = (u + t) % p;
+        P[k + j + (1 << i - 1)] = (u - t + p) % p;
       }
     }
   }
+  //root has order (1<<lg)
   if(inv){
     LL invN = powMod(1 << lgOfP, prime - 2, prime);
     for (int i = 0; i < n; ++i)
       P[i] = P[i] * invN % prime;
   }
+  return P;
 }
-
-
