@@ -66,7 +66,7 @@ vector<int> induced_sort(const T &s, const string &t, const vector<int> &lmss, i
 }
 
 template<typename T>
-vector<int> sa_is(const T &s, int sigma = 256) {
+vector<int> _sa_is(const T &s, int sigma = 256) {
   string t(s.size(), 0);
   t[s.size() - 1] = 'S';
   for (int i = int(s.size()) - 2; i >= 0; --i) {
@@ -116,7 +116,7 @@ vector<int> sa_is(const T &s, int sigma = 256) {
   }
 
   if (lmp_ctr + 1 < lmp_compact.size()) {
-    sa_lms = sa_is(lmp_compact, lmp_ctr + 1);
+    sa_lms = _sa_is(lmp_compact, lmp_ctr + 1);
   } else {
     for (int i = 0; i < lmp_compact.size(); ++i) {
       sa_lms[lmp_compact[i]] = i;
@@ -129,4 +129,10 @@ vector<int> sa_is(const T &s, int sigma = 256) {
   }
 
   return induced_sort(s, t, seed, sigma);
-} // Usage: you have s, then sa = sa_is(s + char(0)), c > 0 for all c in s
+} // Usage: you have s, then sa = _sa_is(s + char(0))[1..-1], c > 0 for all c in s
+
+vector<int> sa_is(const string &s, int sigma = 256) {
+  vector<int> sa = _sa_is(s + char(0), sigma);
+  sa.erase(sa.begin());
+  return sa;
+} // CF: 1e6->31ms,18MB;1e7->296ms;158MB;3e7->856ms,471MB
