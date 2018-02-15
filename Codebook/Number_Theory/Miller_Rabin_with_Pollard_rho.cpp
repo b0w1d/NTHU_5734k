@@ -13,7 +13,7 @@ bool miller_rabin(LL n, int s = 7) {
   if (n < 2) return 0;
   if (n&1^1) return n == 2;
   LL u = n - 1, t = 0;
-  // n == u << t
+  // n == (u << t) + 1
   while (u&1^1) u >>= 1, ++t;
   while (s--) {
     LL a = wits[s] % n;
