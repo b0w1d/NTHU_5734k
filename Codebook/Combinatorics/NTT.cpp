@@ -1,9 +1,9 @@
 /* p == (a << n) + 1
-   n    1 << n      p          a     root
-   5    32          97         3     5
-   6    64          193        3     5
-   7    128         257        2     3
-   8    256         257        1     3
+   n    1 << n      p          a    root
+   5    32          97         3    5
+   6    64          193        3    5
+   7    128         257        2    3
+   8    256         257        1    3
    9    512         7681       15   17
    10   1024        12289      12   11
    11   2048        12289      6    11
@@ -23,25 +23,25 @@
    25   33554432    167772161  5    3 (1107296257, 33, 10)
    26   67108864    469762049  7    3
    27   134217728   2013265921 15   31 */
-LL root = 10, p = 785433, lg = 18, a = 3;
-LL powM(LL x, int b) {
+LL root = 10, p = 786433, lg = 18, a = 3;
+LL powM(LL x, LL b) {
   LL s = 1, m = x % p;
   for (; b; m = m * m % p, b >>= 1)
     if (b&1) s = s * m % p;
   return s;
 }
 vector<LL> NTT(vector<LL> P, bool inv = 0) {
-  int n = P.size();
+  int n = 1 << lg; // == P.size();
   for (int j = 1, i = 0; j < n - 1; ++j) {
     for (int k = n >> 1; k > (i ^= k); k >>= 1);
-    if (j < i) swap(a[i], a[j]);
+    if (j < i) swap(P[i], P[j]);
   } //bit reverse
-  LL w = powM(root, a * (inv? p - 2: 1));
-  for (LL i = 0; i <= lg; ++i) {
-    LL wm = powM(w, 1 << (lg - i - 1));
+  LL w1 = powM(root, a * (inv? p - 2: 1)); // order is 1<<lg
+  for (LL i = 1; i <= lg; ++i) {
+    LL wn = powM(w1, 1<<(lg - i)); // order is 1<<i
     for (int k = 0; k < (1<<lg); k += 1 << i) {
       LL base = 1;
-      for (int j = 0; j < 1 << i - 1; ++j) {
+      for (int j = 0; j < (1 << i - 1); ++j, base = base * wn % p) {
         LL t = base * P[k + j + (1 << i - 1)] % p;
         LL u = P[k + j] % p;
         P[k + j] = (u + t) % p;
@@ -49,11 +49,10 @@ vector<LL> NTT(vector<LL> P, bool inv = 0) {
       }
     }
   }
-  //root has order (1<<lg)
   if(inv){
-    LL invN = powMod(1 << lgOfP, prime - 2, prime);
+    LL invN = powM(n, p - 2);
     for (int i = 0; i < n; ++i)
-      P[i] = P[i] * invN % prime;
+      P[i] = P[i] * invN % p;
   }
   return P;
-}
+} //faster performance with calling by reference
