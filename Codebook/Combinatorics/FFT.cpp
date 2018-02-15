@@ -1,6 +1,7 @@
 typedef complex<double> cpx;
 const double PI = acos(-1);
 vector<cpx> FFT(vector<cpx> &P, bool inv = 0) {
+  assert(__builtin_popcount(P.size()) == 1);
   int lg = 31 - __builtin_clz(P.size()), n = 1 << lg; // == P.size();
   for (int j = 1, i = 0; j < n - 1; ++j) {
     for (int k = n >> 1; k > (i ^= k); k >>= 1);
