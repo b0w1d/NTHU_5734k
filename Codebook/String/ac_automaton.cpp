@@ -1,4 +1,5 @@
-template<int SIGMA = 256>
+const int SIGMA = 256;
+
 struct PMA {
   PMA *next[SIGMA];  // next[0] is for fail
   vector<int> ac;
