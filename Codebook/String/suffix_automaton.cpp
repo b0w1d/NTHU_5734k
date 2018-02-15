@@ -4,14 +4,10 @@ struct SuffixAutomaton {
   vector<int> link;           // link[i]   : the parent of i
   vector<int> length;         // length[i] : the length of the longest string in the ith class
   int last;                   // the index of the equivalence class of the whole string
-  vector<int> terminals;      // accepted states (suffix of s)
+  vector<bool> is_terminal;   // accepted state? (suffix of s)
 
-  SuffixAutomaton(const T &s) {
-    edges.push_back(map<int, int>());
-    link.push_back(-1);
-    length.push_back(0);
-    last = 0;
-    for (int i = 0; i < s.size(); i++) {
+  SuffixAutomaton(const T &s) : edges({map<int, int>()}), link({-1}), length({0}), last(0) {
+    for (int i = 0; i < s.size(); ++i) {
       edges.push_back(map<int, int>());
       length.push_back(i + 1);
       link.push_back(0);
@@ -21,7 +17,7 @@ struct SuffixAutomaton {
         edges[p][s[i]] = r;
         p = link[p];
       }
-      if (p != -1) {
+      if (~p) {
         int q = edges[p][s[i]];
         if (length[p] + 1 == length[q]) { // no need to split q
           link[r] = q;
@@ -40,10 +36,7 @@ struct SuffixAutomaton {
       }
       last = r;
     }
-    int p = last;
-    while(p > 0) {
-      terminals.push_back(p);
-      p = link[p];
-    }
+    is_terminal = vector<bool>(edges.size());
+    for (int p = last; p; p = link[p]) is_terminal[p] = 1;
   }
 };

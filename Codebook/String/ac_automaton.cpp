@@ -6,7 +6,7 @@ struct PMA {
   PMA() { fill(next, next + SIGMA, nullptr); }
 };
 
-template<typename T, int SLB = 'a', int SRB = 'z'>
+template<typename T, int SLB = 'A', int SRB = 'z'>
 PMA *buildPMA(const vector<T> &p) {
   PMA *root = new PMA;
   for (int i = 0; i < p.size(); ++i) {  // make trie
