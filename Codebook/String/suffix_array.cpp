@@ -157,20 +157,13 @@ vector<int> build_lcp_rmq(const vector<int> &lcp) {
   return sgt;
 }
 
-int rmq_query(int t, int lb, int rb, int ql, int qr, const vector<int> &rmq) {
-  if (qr <= lb || rb <= ql) return 1 << 30;
-  if (ql <= lb && rb <= qr) return rmq[t];
-  int mb = lb + rb >> 1;
-  return min(rmq_query(t << 1, lb, mb, ql, qr, rmq), rmq_query(t << 1 | 1, mb, rb, ql, qr, rmq));
-}
-
 // O(|P| + lg |T|) pattern searching, returns last index in sa
 int match(const string &p, const string &s, const vector<int> &sa, const vector<int> &rmq) { // rmq is segtree on lcp
   int t = 1, lb = 0, rb = s.size(); // answer in [lb, rb)
   int lcplp = 0; // lcp(char(0), p) = 0
   while (rb - lb > 1) {
     int mb = lb + rb >> 1;
-    int lcplm = rmq_query(t, lb, rb, lb, mb, rmq);
+    int lcplm = rmq[t << 1];
     if (lcplp < lcplm) t = t << 1, lb = mb;
     else if (lcplp > lcplm) t = t << 1 | 1, rb = mb;
     else {
