@@ -164,20 +164,20 @@ int rmq_query(int t, int lb, int rb, int ql, int qr, const vector<int> &rmq) {
   return min(rmq_query(t << 1, lb, mb, ql, qr, rmq), rmq_query(t << 1 | 1, mb, rb, ql, qr, rmq));
 }
 
-// O(|P| + lg**2 |T|) pattern searching, returns last index in sa
+// O(|P| + lg |T|) pattern searching, returns last index in sa
 int match(const string &p, const string &s, const vector<int> &sa, const vector<int> &rmq) { // rmq is segtree on lcp
-  int lb = 0, rb = s.size(); // answer in [lb, rb)
+  int t = 1, lb = 0, rb = s.size(); // answer in [lb, rb)
   int lcplp = 0; // lcp(char(0), p) = 0
   while (rb - lb > 1) {
     int mb = lb + rb >> 1;
-    int lcplm = rmq_query(1, 0, s.size(), lb, mb, rmq); // implement rmq_query
-    if (lcplp < lcplm) lb = mb;
-    else if (lcplp > lcplm) rb = mb;
+    int lcplm = rmq_query(t, lb, rb, lb, mb, rmq);
+    if (lcplp < lcplm) t = t << 1, lb = mb;
+    else if (lcplp > lcplm) t = t << 1 | 1, rb = mb;
     else {
       int lcpmp = lcplp;
       while (lcpmp < p.size() && sa[mb] + lcpmp < s.size() && p[lcpmp] == s[sa[mb] + lcpmp]) ++lcpmp;
-      if (lcpmp == p.size() || p[lcpmp] > s[sa[mb] + lcpmp]) lb = mb, lcplp = lcpmp;
-      else rb = mb;
+      if (lcpmp == p.size() || p[lcpmp] > s[sa[mb] + lcpmp]) t = t << 1, lb = mb, lcplp = lcpmp;
+      else t = t << 1 | 1, rb = mb;
     }
   }
   if (lcplp < p.size()) return -1;
