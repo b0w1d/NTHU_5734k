@@ -125,7 +125,7 @@ vector<int> sa_is(const T &s, int sigma = 256) {
   }
 
   return induced_sort(s, t, seed, sigma);
-} // Usage: you have s, then sa = sa_is(s + char(0))[1..-1], c > 0 for all c in s
+} // s must end in char(0)
 
 // O(N) lcp, note that s must end in '\0'
 vector<int> build_lcp(const string &s, const vector<int> &sa, const vector<int> &rank) {
