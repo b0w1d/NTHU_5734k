@@ -15,8 +15,7 @@ vector<int> sa_db(const string &s) {
   return sa;
 }
 
-// ------------O(N)-------------
-// CF: 1e6->31ms,18MB;1e7->296ms;158MB;3e7->856ms,471MB
+// O(N) -- CF: 1e6->31ms,18MB;1e7->296ms;158MB;3e7->856ms,471MB
 bool is_lms(const string &t, int i) {
   return i > 0 && t[i - 1] == 'L' && t[i] == 'S';
 }
@@ -142,4 +141,45 @@ vector<int> build_lcp(const string &s, const vector<int> &sa, const vector<int> 
     lcp[rank[i] - 1] = h;
   }
   return lcp; // lcp[i] := lcp(s[sa[i - 1]..-1], s[sa[i]..-1])
+}
+
+// O(N) build segment tree for lcp
+vector<int> build_lcp_rmq(const vector<int> &lcp) {
+  vector<int> sgt(lcp.size() << 2);
+  function<void(int, int, int)> build = [&](int t, int lb, int rb) {
+    if (rb - lb == 1) return sgt[t] = lcp[lb], void();
+    int mb = lb + rb >> 1;
+    build(t << 1, lb, mb);
+    build(t << 1 | 1, mb, rb);
+    sgt[t] = min(sgt[t << 1], sgt[t << 1 | 1]);
+  };
+  build(1, 0, lcp.size());
+  return sgt;
+}
+
+int rmq_query(int t, int lb, int rb, int ql, int qr, const vector<int> &rmq) {
+  if (qr <= lb || rb <= ql) return 1 << 30;
+  if (ql <= lb && rb <= qr) return rmq[t];
+  int mb = lb + rb >> 1;
+  return min(rmq_query(t << 1, lb, mb, ql, qr, rmq), rmq_query(t << 1 | 1, mb, rb, ql, qr, rmq));
+}
+
+// O(|P| + lg**2 |T|) pattern searching, returns last index in sa
+int match(const string &p, const string &s, const vector<int> &sa, const vector<int> &rmq) { // rmq is segtree on lcp
+  int lb = 0, rb = s.size(); // answer in [lb, rb)
+  int lcplp = 0; // lcp(char(0), p) = 0
+  while (rb - lb > 1) {
+    int mb = lb + rb >> 1;
+    int lcplm = rmq_query(1, 0, s.size(), lb, mb, rmq); // implement rmq_query
+    if (lcplp < lcplm) lb = mb;
+    else if (lcplp > lcplm) rb = mb;
+    else {
+      int lcpmp = lcplp;
+      while (lcpmp < p.size() && sa[mb] + lcpmp < s.size() && p[lcpmp] == s[sa[mb] + lcpmp]) ++lcpmp;
+      if (lcpmp == p.size() || p[lcpmp] > s[sa[mb] + lcpmp]) lb = mb, lcplp = lcpmp;
+      else rb = mb;
+    }
+  }
+  if (lcplp < p.size()) return -1;
+  return sa[lb];
 }
