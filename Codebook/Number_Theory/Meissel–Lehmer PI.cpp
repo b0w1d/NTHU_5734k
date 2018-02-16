@@ -3,6 +3,7 @@ const int MAXM = 10000, MAXN = 650, UPBD = 5000000;
 // 650 ~ PI(cbrt(1e11))
 LL pi[UPBD] = {0}, phi[MAXM][MAXN];
 vector<LL> primes;
+
 void init() {
   fill(pi + 2, pi + UPBD, 1);
   for (LL p = 2; p < UPBD; ++p) 
@@ -18,6 +19,7 @@ void init() {
     for (int j = 1; j < MAXN; ++j)
       phi[i][j] = phi[i][j - 1] - phi[i / primes[j - 1]][j - 1];
 }
+
 LL P_2(LL m, LL n) {
   LL ans = 0;
   for (LL i = n; primes[i] * primes[i] <= m and i < primes.size(); ++i) 
@@ -40,6 +42,7 @@ LL PHI(LL m, LL n) {
   }
   return PHI(m, n - 1) - PHI(m / p, n - 1);
 }
+
 LL PI(LL m) {
   if (m < UPBD) return pi[m];
   LL y = cbrt(m) + 10, n = pi[y];
