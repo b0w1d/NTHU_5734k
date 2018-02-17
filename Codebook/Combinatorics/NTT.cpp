@@ -51,7 +51,7 @@ vector<LL> NTT(vector<LL> P, bool inv = 0) {
   }
   if(inv){
     LL invN = powM(n, p - 2);
-    transform(s.begin(), s.end(), s.begin(), [&](LL a) {return a * invN % p;});
+    transform(P.begin(), P.end(), P.begin(), [&](LL a) {return a * invN % p;});
   }
   return P;
 } //faster performance with calling by reference
