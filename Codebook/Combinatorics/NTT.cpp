@@ -51,8 +51,7 @@ vector<LL> NTT(vector<LL> P, bool inv = 0) {
   }
   if(inv){
     LL invN = powM(n, p - 2);
-    for (int i = 0; i < n; ++i)
-      P[i] = P[i] * invN % p;
+    transform(s.begin(), s.end(), s.begin(), [&](LL a) {return a * invN % p;});
   }
   return P;
 } //faster performance with calling by reference
