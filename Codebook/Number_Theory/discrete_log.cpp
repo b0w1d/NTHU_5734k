@@ -8,6 +8,6 @@ LL discrete_log(LL b, LL p, LL n) {
       return (att[cur * n % p] + i * m) % (p - 1);
   return -1;
 }
-// find x s.t. b**x % p == n
+// find x s.t. b**x % p == n with complexity O(sqrt(N))
 // return the smallest
 // return -1 if ans doesn't exist
