@@ -140,7 +140,7 @@ vector<int> build_lcp(const string &s, const vector<int> &sa, const vector<int> 
     }
     lcp[rank[i] - 1] = h;
   }
-  return lcp; // lcp[i] := lcp(s[sa[i - 1]..-1], s[sa[i]..-1])
+  return lcp; // lcp[i] := lcp(s[sa[i]..-1], s[sa[i + 1]..-1])
 }
 
 // O(N) build segment tree for lcp
