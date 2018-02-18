@@ -31,7 +31,8 @@ LL powM(LL x, LL b) {
   return s;
 }
 vector<LL> NTT(vector<LL> P, bool inv = 0) {
-  int n = 1 << lg; // == P.size();
+  assert(__builtin_popcount(P.size()) == 1);
+  int lg = 31 - __builtin_clz(P.size()), n = 1 << lg; // == P.size();
   for (int j = 1, i = 0; j < n - 1; ++j) {
     for (int k = n >> 1; k > (i ^= k); k >>= 1);
     if (j < i) swap(P[i], P[j]);
