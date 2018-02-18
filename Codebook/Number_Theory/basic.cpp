@@ -10,7 +10,7 @@ LL mul(LL x, LL y, LL mod) {
   return s * sgn;
 }
 LL dangerous_mul(LL a, LL b){ // 10 times faster than the above in average, but could be prone to wrong answer (extreme low prob?)
-	return (a * b - (LL)((long double)a * b / P) * P) % P;
+  return (a * b - (LL)((long double)a * b / P) * P) % P;
 }
 LL powmod(LL x, LL p, LL mod) {
   LL s = 1, m = x % mod;
