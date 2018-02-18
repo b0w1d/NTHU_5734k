@@ -7,5 +7,5 @@ vector<int> build_kmp(const T &s) {
     if (s[fp + 1] == s[i]) ++fp;
     f[i] = fp;
   }
-  return fp;
+  return f;
 }
