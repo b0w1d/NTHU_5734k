@@ -9,8 +9,8 @@ LL mul(LL x, LL y, LL mod) {
     if (y&1) s += m, s = s >= mod? s - mod: s;
   return s * sgn;
 }
-LL dangerous_mul(LL a, LL b){ // 10 times faster than the above in average, but could be prone to wrong answer (extreme low prob?)
-  return (a * b - (LL)((long double)a * b / P) * P) % P;
+LL dangerous_mul(LL a, LL b, LL mod){ // 10 times faster than the above in average, but could be prone to wrong answer (extreme low prob?)
+  return (a * b - (LL)((long double)a * b / mod) * mod) % mod;
 }
 LL powmod(LL x, LL p, LL mod) {
   LL s = 1, m = x % mod;
