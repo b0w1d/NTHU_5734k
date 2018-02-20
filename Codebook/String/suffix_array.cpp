@@ -164,13 +164,13 @@ int match(const string &p, const string &s, const vector<int> &sa, const vector<
   while (rb - lb > 1) {
     int mb = lb + rb >> 1;
     int lcplm = rmq[t << 1];
-    if (lcplp < lcplm) t = t << 1, lb = mb;
-    else if (lcplp > lcplm) t = t << 1 | 1, rb = mb;
+    if (lcplp < lcplm) t = t << 1 | 1, lb = mb;
+    else if (lcplp > lcplm) t = t << 1, rb = mb;
     else {
       int lcpmp = lcplp;
-      while (lcpmp < p.size() && sa[mb] + lcpmp < s.size() && p[lcpmp] == s[sa[mb] + lcpmp]) ++lcpmp;
-      if (lcpmp == p.size() || p[lcpmp] > s[sa[mb] + lcpmp]) t = t << 1, lb = mb, lcplp = lcpmp;
-      else t = t << 1 | 1, rb = mb;
+      while (lcpmp < p.size() && p[lcpmp] == s[sa[mb] + lcpmp]) ++lcpmp;
+      if (lcpmp == p.size() || p[lcpmp] > s[sa[mb] + lcpmp]) t = t << 1 | 1, lb = mb, lcplp = lcpmp;
+      else t = t << 1, rb = mb;
     }
   }
   if (lcplp < p.size()) return -1;
