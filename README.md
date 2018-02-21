@@ -26,7 +26,7 @@ The directory contains our solutions of practiced contest
 
 ## Todos
 1. Upload costflow
-1. Upload Tarjan SCC
+1. Upload SCC/BCC
 1. Upload blossom matching 
 1. Upload maximum-clique
 1. Upload power of tower
