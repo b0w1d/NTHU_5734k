@@ -30,7 +30,6 @@ LL PHI(LL m, LL n) {
   LL p = primes[n - 1];
   if (m < UPBD) {
     if (m <= p) return 1;
-    if (m <= p * p) return pi[m] - n + 1;
     if (m <= p * p * p) return pi[m] - n + 1 + P_2(m, n);
   }
   return PHI(m, n - 1) - PHI(m / p, n - 1);
