@@ -31,7 +31,7 @@ The directory contains our solutions of practiced contest
 1. Upload maximum-clique
 1. Upload power of tower
 1. Upload Erdös-Gallai formula
-1. Upload pernament computation
+1. Upload set iteration
 1. Upload half-plane intersection
 1. Upload Gham scan
 1. Upload Simplex algorithm
