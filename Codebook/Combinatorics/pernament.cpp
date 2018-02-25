@@ -6,7 +6,7 @@ LL pernament(mat A) {
     i = __builtin_ctz(pgray ^ gray);
     for (int j = 0; j < n; ++j) 
       add *= tmp[j] += A[i][j] * (gray>>i&1 ? 1 : -1);
-    ans += add * (s&1 ? -1 : 1), pgray = gray;
+    ans += add * (s&1^n&1? -1 : 1), pgray = gray;
   }
   return ans;
 }
