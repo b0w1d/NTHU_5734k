@@ -1,5 +1,5 @@
 typedef vector<vector<LL> > mat;
-LL pernament(mat A) {
+LL permanent(mat A) {
   LL n = A.size(), ans = 0, *tmp = new LL[n], add;
   for (int pgray = 0, s = 1, gray, i; s < 1 << n; ++s) {
     gray = s ^ s >> 1, add = 1;
