@@ -12,13 +12,11 @@ const LL wits[7] = {2, 325, 9375, 28178, 450775, 9780504, 1795265022};
 bool miller_rabin(LL n, int s = 7) {
   if (n < 2) return 0;
   if (n&1^1) return n == 2;
-  LL u = n - 1, t = 0;
+  LL u = n - 1, t = 0, a;
   // n == (u << t) + 1
   while (u&1^1) u >>= 1, ++t;
-  while (s--) {
-    LL a = wits[s] % n;
-    if (a and witness(a, n, u, t)) return 0;
-  }
+  while (s--) 
+    if (a = wits[s] % n and witness(a, n, u, t)) return 0;
   return 1;
 }
 // Pollard_rho
