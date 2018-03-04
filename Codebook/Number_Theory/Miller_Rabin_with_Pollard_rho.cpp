@@ -26,15 +26,12 @@ LL f(LL x, LL n) {
   return mul(x, x, n) + 1;
 }
 LL pollard_rho(LL n) {
-  int cnt = 0;
   if (n&1^1) return 2;
   while (true) {
     LL x = rand() % (n - 1) + 1, y = 2, d = 1;
-    for (int sz = 2; d == 1; sz <<= 1) {
+    for (int sz = 2; d == 1; y = x, sz <<= 1) 
       for (int i = 0; i < sz and d <= 1; ++i) 
         x = f(x, n), d = __gcd(abs(x - y), n);
-      y = x;
-    }
     if (d and n - d) return d;
   }
 }
