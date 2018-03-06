@@ -37,5 +37,5 @@ The directory contains our solutions of practiced contest
 1. Upload Simplex algorithm
 1. Upload Functional Heavily-Light Decomposition
 1. Add Data Structure directory
-
+1. Add Approximation formula
 
