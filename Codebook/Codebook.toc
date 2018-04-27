@@ -1,13 +1,26 @@
 \contentsline {section}{\numberline {1}Basic}{1}
-\contentsline {subsection}{\numberline {1.1}vimrc}{1}
-\contentsline {section}{\numberline {2}Flow}{1}
-\contentsline {subsection}{\numberline {2.1}Dinic}{1}
-\contentsline {section}{\numberline {3}Geometry}{1}
-\contentsline {section}{\numberline {4}Mathmatics}{1}
-\contentsline {section}{\numberline {5}Graph}{1}
-\contentsline {section}{\numberline {6}Data Structure}{1}
-\contentsline {section}{\numberline {7}String}{1}
-\contentsline {section}{\numberline {8}Dark Code}{1}
-\contentsline {section}{\numberline {9}Search}{1}
-\contentsline {section}{\numberline {10}Others}{1}
-\contentsline {section}{\numberline {11}Persistence}{1}
+\contentsline {subsection}{\numberline {1.1}.vimrc}{1}
+\contentsline {section}{\numberline {2}Combinatorics}{1}
+\contentsline {subsection}{\numberline {2.1}FFT}{1}
+\contentsline {subsection}{\numberline {2.2}FWT}{1}
+\contentsline {subsection}{\numberline {2.3}NTT}{2}
+\contentsline {subsection}{\numberline {2.4}permanent}{2}
+\contentsline {section}{\numberline {3}Data Structure}{2}
+\contentsline {subsection}{\numberline {3.1}Heavy Light Decomposition}{2}
+\contentsline {section}{\numberline {4}Flow}{3}
+\contentsline {subsection}{\numberline {4.1}CostFlow}{3}
+\contentsline {subsection}{\numberline {4.2}Dinic}{3}
+\contentsline {section}{\numberline {5}Geometry}{3}
+\contentsline {subsection}{\numberline {5.1}Line and points}{3}
+\contentsline {section}{\numberline {6}Graph}{4}
+\contentsline {subsection}{\numberline {6.1}2-SAT}{4}
+\contentsline {subsection}{\numberline {6.2}maximal cliques}{5}
+\contentsline {subsection}{\numberline {6.3}Tarjan SCC}{5}
+\contentsline {section}{\numberline {7}Number Theory}{6}
+\contentsline {subsection}{\numberline {7.1}basic}{6}
+\contentsline {subsection}{\numberline {7.2}Chinese Remainder Theorem}{6}
+\contentsline {subsection}{\numberline {7.3}Discrete Log}{6}
+\contentsline {subsection}{\numberline {7.4}Lucas}{6}
+\contentsline {subsection}{\numberline {7.5}Meissel-Lehmer PI}{6}
+\contentsline {subsection}{\numberline {7.6}Miller Rabin with Pollard rho}{7}
+\contentsline {subsection}{\numberline {7.7}Primitive Root}{7}
