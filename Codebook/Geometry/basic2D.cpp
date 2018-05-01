@@ -5,16 +5,9 @@ namespace geo {
   const double PI = acos(-1);
   pt cent(cir C) { return C.first; }
   double radi(cir C) { return C.second; }
-  int dcmp(double x) {
-    if (abs(x) < EPS) return 0;
-    return x > 0 ? 1 : -1;
-  }
-  bool less(pt a, pt b) {
-    return real(a) < real(b) || real(a) == real(b) && imag(a) < imag(b);
-  }
-  bool more(pt a, pt b) {
-    return real(a) > real(b) || real(a) == real(b) && imag(a) > imag(b);
-  }
+  int dcmp(double x) { return abs(x) < EPS ? 0 : x > 0 ? 1 : -1; }
+  bool less(pt a, pt b) { return real(a) < real(b) || real(a) == real(b) && imag(a) < imag(b); }
+  bool more(pt a, pt b) { return real(a) > real(b) || real(a) == real(b) && imag(a) > imag(b); }
   double dot(pt a, pt b) { return real(conj(a) * b); }
   double cross(pt a, pt b) { return imag(conj(a) * b); }
   double sarea(pt a, pt b, pt c) { return cross(b - a, c - a); }
@@ -23,6 +16,7 @@ namespace geo {
   pt rotate(pt a, double rad) { return a * pt(cos(rad), sin(rad)); }
   pt normal(pt a) { return pt(-imag(a) / abs(a), real(a) / abs(a)); }
   pt normalized(pt a) { return a / abs(a); }
+
   pt get_line_intersection(pt p, pt v, pt q, pt w) {
     // L = p + t * v, J = q + s * w
     assert(dcmp(cross(v, w)));
