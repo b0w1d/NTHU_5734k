@@ -1,6 +1,7 @@
 namespace geo {
   using pt = complex<double>;
   using cir = pair<pt, double>;
+  pt get_pt() { static double a, b; scanf("%lf%lf", &a, &b); return geo::pt(a, b);};
   const double EPS = 1e-4;
   const double PI = acos(-1);
   pt cent(cir C) { return C.first; }
@@ -11,6 +12,7 @@ namespace geo {
   double dot(pt a, pt b) { return real(conj(a) * b); }
   double cross(pt a, pt b) { return imag(conj(a) * b); }
   double sarea(pt a, pt b, pt c) { return cross(b - a, c - a); }
+  double area(cir c) { return radi(c) * radi(c) * PI; }
   int ori(pt a, pt b, pt c) { return dcmp(sarea(a, b, c)); }
   double angle(pt a, pt b) { return acos(dot(a, b) / abs(a) / abs(b)); }
   pt rotate(pt a, double rad) { return a * pt(cos(rad), sin(rad)); }
@@ -43,7 +45,7 @@ namespace geo {
     double det2 = ori(b1, b2, a1) * ori(b1, b2, a2);
     return det1 < 0 && det2 < 0;
   }
-  double polygon_area(vector<pt> p) {
+  double area(vector<pt> p) {
     double area = 0;
     for (int i = 1; i < p.size() - 1; ++i) {
       area += sarea(p[0], p[i], p[i + 1]);
@@ -129,5 +131,20 @@ namespace geo {
     auto theta = acos((r * r + g * g - s * s) / (2 * r * g));
     if (dcmp(theta) == 0) return {a + r * C_to_D};
     else return {a + rotate(r * C_to_D, theta), a + rotate(r * C_to_D, -theta)};
+  }
+  cir min_circle_cover(vector<pt> A) {
+    random_shuffle(A.begin(), A.end());
+    assert(A.size());
+    cir ans = {A[0], 0};
+    auto is_incir = [&](pt a) { return dcmp(abs(cent(ans) - a) - radi(ans)) < 0; };
+    for (int i = 1; i < A.size(); ++i) if (not is_incir(A[i])) {
+      ans = {A[i], 0};
+      for (int j = 0; j < i; ++j) if (not is_incir(A[j])) {
+        ans = {(A[i] + A[j]) / 2., abs(A[i] - A[j]) / 2};
+        for (int k = 0; k < j; ++k) if (not is_incir(A[k])) 
+          ans = circumscribed_circle({A[i], A[j], A[k]});
+      }
+    }
+    return ans;
   }
 };
