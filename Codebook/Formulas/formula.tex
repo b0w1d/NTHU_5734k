@@ -3,11 +3,11 @@
 %\setCJKmainfont{微軟正黑體}
 %\begin{document}
 
-\subsubsection{Pick's theorem}
+\subsection{Pick's theorem}
 Pick's theorem provides a simple formula for calculating the area $A$ of this polygon in terms of the number $i$ of lattice points in the interior located in the polygon and the number $b$ of lattice points on the boundary placed on the polygon's perimeter:
 $$A = i + \frac{b}{2} - 1$$
 
-\subsubsection{Graph Properties}
+\subsection{Graph Properties}
 \begin{enumerate}\itemsep = -5pt
 \item Euler's Formula $V-E+F=2$
 \item For a planar graph, $F=E-V+n+1$, n is the numbers of components
@@ -62,7 +62,7 @@ for(int i=1;i<=n;++i)
 
 
 
-\subsubsection{Number Theory}
+\subsection{Number Theory}
 \begin{enumerate}\itemsep = -3pt
   \item $g(m)=\sum_{d|m}f(d)\Leftrightarrow f(m)=\sum_{d|m}\mu (d) \times g(m/d)$
   \item $\phi(x), \mu(x)$ are Möbius inverse
@@ -70,7 +70,7 @@ for(int i=1;i<=n;++i)
   \item $\sum_{i=1}^n\sum_{j=1}^nlcm(i,j)=n\sum_{d|n} d \times \phi (d)$
 \end{enumerate}
 
-\subsubsection{Combinatorics}
+\subsection{Combinatorics}
 \begin{enumerate}
 \itemsep = -3pt
   \item $\text{Harmonic series } H_n = \ln(n) + \gamma + 1/(2n) - 1/(12n^2) + 1/(120n^4)$
@@ -79,6 +79,7 @@ for(int i=1;i<=n;++i)
   \item Catalan Number: $\frac{C_{n}^{kn}}{n(k-1)+1}$，$C_{m}^{n}=\frac{n!}{m!(n-m)!}$
   \item $\gamma(n + 1) = n!$
   \item $H(n,m)\cong x_1+x_2\ldots +x_n=k, num=C_{k}^{n+k-1}$
+  \item $n!\approx \sqrt{2\pi n}  \left( \frac{n}{e} \right)^n$
   \item Stirling number of $2^{nd}$ kind: $n$人分$k$組方法數目
 	\begin{enumerate}\itemsep = -2pt
 		\item $S(0,0)=S(n,n)=1$
@@ -116,7 +117,7 @@ for(int i=1;i<=n;++i)
 \end{enumerate}
 
 
-\subsubsection{冪次,冪次和}
+\subsection{冪次,冪次和}
 \begin{enumerate}\itemsep = -3pt
 	\item $a^b\%P=a^{b\% \varphi (p)+\varphi (p)},b\geq \varphi (p)$
 	\item $1^3+2^3+3^3+\ldots +n^3=\frac{n^4}{4}+\frac{n^3}{2}+\frac{n^2}{4}$
@@ -129,7 +130,7 @@ for(int i=1;i<=n;++i)
 	\item $B_2=1/6,B_4=-1/30,B_6=1/42,B_8=-1/30,B_{10}=5/66,B_{12}=-691/2730,B_{14}=7/6,B_{16}=-3617/510,B_{18}=43867/798,B_{20}=-174611/330,$
 \end{enumerate}
 
-\subsubsection{Burnside's lemma}
+\subsection{Burnside's lemma}
 \begin{enumerate}\itemsep = -3pt
 	\item $|X/G| = \frac{1}{|G|}\sum_{g \in G}|X^g|$
 	\item $X^g=t^{c(g)}$
@@ -137,7 +138,7 @@ for(int i=1;i<=n;++i)
 	\item 正立方體塗三顏色，轉0有$3^6$ 個元素不變，轉90有6種，每種有$3^3$不變，180有$3\times 3^4$，120(角)有$8\times 3^2$，180(邊)有$6\times 3^3$，全部$\frac{1}{24}\left(3^6+6\times 3^3 + 3 \times 3^4 + 8 \times 3^2 + 6 \times 3^3 \right) = 57$
 \end{enumerate}
 
-\subsubsection{Count on a tree}
+\subsection{Count on a tree}
 \begin{enumerate}\itemsep = -3pt
 	\item Rooted tree: $s_{n+1}=\frac{1}{n}\sum_{i=1}^{n}(i\times a_i\times \sum_{j=1}^{\left \lfloor  n/i\right \rfloor} a_{n+1-i\times j})$
 	\item Unrooted tree: 
