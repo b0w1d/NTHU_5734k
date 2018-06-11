@@ -1,2 +1,2 @@
 syntax on
-set nu ai bs=2 sw=2 et ve=all cb=unnamed mouse=a ruler incsearch hlsearch
+set nu ai bs=2 sw=2 ts=2 et ve=all cb=unnamed mouse=a ruler incsearch hlsearch
