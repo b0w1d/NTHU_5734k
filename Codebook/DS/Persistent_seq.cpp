@@ -1,31 +1,31 @@
 struct Seg{
-  int l, m, r, min_value = 1e9;
-  Seg* ch[2] = {nullptr, nullptr};
-  Seg(int l, int r) : l(l), r(r) {
-    m = l + r >> 1;
+  pii val;
+  Seg *l, *r;
+  Seg() : val({INF, 0}), l(NULL), r(NULL) {}
+  Seg(Seg* l, Seg* r) : l(l), r(r) {
+    val = min(l -> val, r -> val);
   }
-  void build() {
-    if (r - l == 1) return;
-    ch[0] = new Seg(l, m);
-    ch[1] = new Seg(m, r);
-    ch[0] -> build();
-    ch[1] -> build();
-  }
-  Seg* modify(int p, int v) {
-    Seg* ret = new Seg(l, r);
-    if (r - l == 1) {
-      ret -> min_value = v;
-      return ret;
-    }
-    ret -> ch[0] = p < m ? ch[0] -> modify(p, v) : ch[0];
-    ret -> ch[1] = p >= m ? ch[1] -> modify(p, v) : ch[1];
-    return ret;
-  }
-  int query(int ql, int qr) {
-    if (r - l == 1) return min_value;
-    int ans = 1e9;
-    if (ql < m) ans = min(ans, ch[0] -> query(ql, qr));
-    if (qr > m) ans = min(ans, ch[1] -> query(ql, qr));
-    return ans;
+  Seg(int pos, int val) : l(NULL), r(NULL) {
+    this -> val = {val, pos};
   }
 };
+pii query(Seg* t, int l, int r, int L, int R) {
+  if (L >= R) return {INF, 0};
+  if (L <= l and r <= R) return t -> val;
+  int mid = l + r >> 1;
+  return min(query(t -> l, l, mid, L, min(mid, R)), 
+             query(t -> r, mid, r, max(mid, L), R));
+}
+Seg* modify(Seg* t, int l, int r, int pos, int val) {
+  if (r - l == 1) return new Seg(pos, val);
+  int m = l + r >> 1;
+  if (pos < m) return new Seg(modify(t -> l, l, m, pos, val), t -> r);
+  else return new Seg(t -> l, modify(t -> r, m, r, pos, val));
+}
+Seg* build(int l, int r) {
+  if (l == r - 1) return new Seg(l, INF);
+  else {
+    int mid = l + r >> 1;
+    return new Seg(build(l, mid), build(mid, r));
+  }
+}
