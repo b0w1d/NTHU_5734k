@@ -18,3 +18,10 @@ LL powmod(LL x, LL p, LL mod) {
     if (p&1) s = mul(s, m, mod);
   return s;
 }
+vector<LL> linear_inv(LL p) {
+  vector<LL> inv(p);
+  inv[1] = 1;
+  for (int i = 2; i < p; ++i)
+    inv[i] = (p - p / i) * inv[p % i] % p;
+  return inv;
+}
