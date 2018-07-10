@@ -64,12 +64,12 @@ namespace geo {
   bool is_point_in_plane(pt p, line H) {
     return ori(st(H), ed(H), p) > 0;
   }
-  int is_point_in_polygon(pt p, poly gon) {
+  bool is_point_in_polygon(pt p, poly gon) {
     int wn = 0;
     int n = gon.size();
     for (int i = 0; i < n; ++i) {
       if (is_point_on_segment(p, {gon[i], gon[(i + 1) % n]})) return true;
-      if (is_point_in_plane(p, {gon[i], gon[(i + 1) % n]})) return false;
+      if (not is_point_in_plane(p, {gon[i], gon[(i + 1) % n]})) return false;
     }
     return true;
   }
