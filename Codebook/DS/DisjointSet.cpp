@@ -28,11 +28,12 @@ struct DisjointSet{
     while (fa[x] != x) x = fa[x];
     return x;
   }
-  void uni(int x, int y) {
+  bool uni(int x, int y) {
     x = f(x), y = f(y);
-    if (x == y) return;
+    if (x == y) return false;
     if (sz[x] < sz[y]) swap(x, y);
     assign(&sz[x], sz[x] + sz[y]);
     assign(&fa[y], x);
+    return true;
   }
 }djs;
