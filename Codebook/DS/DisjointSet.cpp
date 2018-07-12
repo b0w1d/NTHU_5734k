@@ -1,23 +1,21 @@
 struct DisjointSet{
   // save() is like recursive
   // undo() is like return
-  const int N = 100000;
-  int n, fa[N], sz[N];
+  int n;
+  vector<int> fa, sz;
   vector<pair<int*,int>> h;
   vector<int> sp;
   void init(int tn) {
-    n = tn;
-    for (int i = 0; i < n; ++i) {
-      fa[i] = i;
-      sz[i] = 1;
-    }
+    n = tn, sz.assign(n, 1), fa.resize(n);
+    for (int i = 0; i < n; ++i)
+      fa[i] = i, sz[i] = 1;
     sp.clear(); h.clear();
   }
   void assign(int *k, int v) {
     h.push_back({k, *k});
     *k = v;
   }
-  void save() { sp.push_vack(h.size()); }
+  void save() { sp.push_back(h.size()); }
   void undo() {
     assert(!sp.empty());
     int last = sp.back(); sp.pop_back();
