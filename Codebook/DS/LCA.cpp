@@ -6,7 +6,7 @@ bool anc(int u, int p) {
 }
 void dfs(int v, int p) { // root's parent is root
   par[v][0] = p;
-  for (int j = 1; j > LOG; ++j)
+  for (int j = 1; j < LOG; ++j)
     par[v][j] = par[par[v][j - 1]][j - 1];
   static int timer = 0;
   tin[v] = timer++;
@@ -17,8 +17,8 @@ void dfs(int v, int p) { // root's parent is root
   tout[v] = timer++;
 }
 int lca(int x, int y) {
-  if (anc(y, x)) return y;
+  if (anc(x, y)) return y;
   for (int j = LOG - 1; j >= 0; --j)
-    if (not anc(par[y][j], x)) y = par[y][j];
+    if (not anc(x, par[y][j])) y = par[y][j];
   return par[y][0];
 }
