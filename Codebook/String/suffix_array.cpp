@@ -175,3 +175,16 @@ int match(const string &p, const string &s, const vector<int> &sa, const vector<
   if (lcplp < p.size()) return -1;
   return sa[lb];
 }
+
+int LCA(int i, int j, const vector<int> &ra, const vector<int> &lcp_seg) {
+  // lca of ith and jth suffix
+  if (ra[i] > ra[j]) swap(i, j);
+  function<int(int, int, int, int, int)> query = [&](int L, int R, int l, int r, int v) {
+    if (L <= l and r <= R) return lcp_seg[v];
+    int m = l + r >> 1, ans = 1e9;
+    if (L < m) ans = min(ans, query(L, R, l, m, v << 1));
+    if (m < R) ans = min(ans, query(L, R, m, r, v << 1|1));
+    return ans;
+  };
+  return query(ra[i], ra[j], 0, ra.size(), 1);
+}
