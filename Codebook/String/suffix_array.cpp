@@ -188,3 +188,18 @@ int LCA(int i, int j, const vector<int> &ra, const vector<int> &lcp_seg) {
   };
   return query(ra[i], ra[j], 0, ra.size(), 1);
 }
+vector<vector<int>> build_lcp_sparse_table(const vector<int> &lcp) {
+  int n = lcp.size(), lg = 31 - __builtin_clz(n);
+  vector<vector<int>> st(lg + 1, vector<int>(n));
+  for (int i = 0; i < n; ++i) st[0][i] = lcp[i];
+  for (int j = 1; (1<<j) <= n; ++j)
+    for (int i = 0; i + (1<<j) <= n; ++i)
+      st[j][i] = min(st[j - 1][i], st[j - 1][i + (1<<(j - 1))]);
+  return st;
+}
+int sparse_rmq(int i, int j, const vector<int> &ra, const vector<vector<int>> &st) {
+  int n = st[0].size();
+  if (ra[i] > ra[j]) swap(i, j);
+  int k = 31 - __builtin_clz(ra[j] - ra[i]);
+  return min(st[k][ra[i]], st[k][ra[j] - (1<<k)]);
+}
