@@ -3,11 +3,11 @@ PLL exd_gcd(LL a, LL b) {
   PLL T = exd_gcd(b, a % b);
   return {T.second, T.first - a / b * T.second};
 }
-LL mul(LL x, LL y, LL mod) {
-  LL ans = 0, m = abs(x), s = 0, sgn = (x > 0) xor (y > 0)? -1: 1;
-  for (x = abs(x), y = abs(y); y; y >>= 1, m <<= 1, m = m >= mod? m - mod: m)
-    if (y&1) s += m, s = s >= mod? s - mod: s;
-  return (s * sgn % mod + mod) % mod;
+LL powmod(LL x, LL p, LL mod) {
+  LL s = 1, m = x % mod;
+  for (; p; m = m * m % mod, p >>= 1)
+    if (p&1) s = s * m % mod; // or consider int128
+  return s;
 }
 LL dangerous_mul(LL a, LL b, LL mod){ // 10 times faster than the above in average, but could be prone to wrong answer (extreme low prob?)
   return (a * b - (LL)((long double)a * b / mod) * mod) % mod;
