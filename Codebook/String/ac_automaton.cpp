@@ -72,3 +72,11 @@ map<int, int> match(const T &t, PMA *v) {
   }
   return res;
 }
+
+signed main() {
+  INV_SIGMA.assign(256, -1);
+  for (int i = 0; i < SIGMA.size(); ++i) {
+    INV_SIGMA[SIGMA[i]] = i;
+  }
+
+}
