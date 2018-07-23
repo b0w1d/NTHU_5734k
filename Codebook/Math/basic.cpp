@@ -12,10 +12,10 @@ LL powmod(LL x, LL p, LL mod) {
 LL dangerous_mul(LL a, LL b, LL mod){ // 10 times faster than the above in average, but could be prone to wrong answer (extreme low prob?)
   return (a * b - (LL)((long double)a * b / mod) * mod) % mod;
 }
-vector<LL> linear_inv(LL p) {
-  vector<LL> inv(p);
+vector<LL> linear_inv(LL p, int k) { // take k
+  vector<LL> inv(min(p, 1ll + k));
   inv[1] = 1;
-  for (int i = 2; i < p; ++i)
+  for (int i = 2; i < inv.size(); ++i)
     inv[i] = (p - p / i) * inv[p % i] % p;
   return inv;
 }
