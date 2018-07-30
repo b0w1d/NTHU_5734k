@@ -1,7 +1,7 @@
 LL fac[100000] = {1};
 LL C(LL a, LL b, LL p) {
   for (int i = 1; i <= p; ++i) fac[i] = fac[i - 1] * i % p;
-  LL ans = 1;
+  LL ans = 0;
   for (;a; a /= p, b /= p) {
     LL A = a % p, B = b % p;
     if (A < B) return 0;
