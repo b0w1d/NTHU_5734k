@@ -18,7 +18,7 @@ class matching {
     iter = 0;
   }
 
-  void add(int from, int to) {
+  void add_edge(int from, int to) {
     assert(0 <= from && from < n && 0 <= to && to < m);
     g[from].push_back(to);
   }
