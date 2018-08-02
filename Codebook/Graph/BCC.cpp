@@ -31,13 +31,13 @@ struct BCC_solver{
   void dfs_vertice(int u, int p = -1) {
     dfn[u] = low[u] = step++;
     stk.push_back(u);
-    int z;
+    int z; // if u root, check it's ch_sz
     for (int v: g[u]) {
       if (v == p) continue;
       if (dfn[v] == -1) {
         dfs_vertice(v, u);
         low[u] = min(low[u], low[v]);
-        if (low[v] >= dfn[u]) {
+        if (low[v] >= dfn[u]) { // u is acc
           BCC.push_back(vector<int>(0));
           do {
             z = stk.back(); stk.pop_back();
