@@ -177,4 +177,32 @@ namespace geo {
     ans.push_back(get_line_intersection(q.back(), q.front()));
     return poly(ans.begin(), ans.end());
   }
+  pair<pt, pt> closest_pair(vector<pt> &V, int l, int r) { // l = 0, r = V.size()
+    pair<pt, pt> ret = {pt(-1e18), pt(1e18)};
+    const auto upd = [&](pair<pt, pt> a) {
+      if (abs(a.first - a.second) < abs(ret.first - ret.second)) ret = a;
+    };
+    if (r - l < 40) { // GOD's number! It performs well!
+      for (int i = l; i < r; ++i) for (int j = l; j < i; ++j)
+        upd({V[i], V[j]});
+      return ret;
+    }
+    int m = l + r >> 1;
+    const auto cmpy = [](pt a, pt b) { return imag(a) < imag(b); };
+    const auto cmpx = [](pt a, pt b) { return real(a) < real(b); };
+    nth_element(V.begin() + l, V.begin() + m, V.begin() + r, cmpx);
+    pt mid = V[m];
+    upd(closest_pair(V, l, m));
+    upd(closest_pair(V, m, r));
+    double delta = abs(ret.first - ret.second);
+    vector<pt> spine;
+    for (int k = l; k < r; ++k)
+      if (abs(real(V[k]) - real(V[m])) < delta) spine.push_back(V[k]);
+    sort(spine.begin(), spine.end(), cmpy);
+    for (int i = 0; i < spine.size(); ++i)
+      for (int j = i + 1; j - i < 8 and j < spine.size(); ++j) {
+        upd({spine[i], spine[j]});
+      }
+    return ret;
+  }
 };
