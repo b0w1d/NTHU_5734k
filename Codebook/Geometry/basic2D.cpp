@@ -4,7 +4,7 @@ namespace geo {
   using poly = vector<pt>;
   using line = pair<pt, pt>; // point to point
   using plane = pair<pt, pt>;
-  pt get_pt() { static double a, b; scanf("%lf%lf", &a, &b); return geo::pt(a, b);};
+  pt get_pt() { static double a, b; cin >> a >> b; return geo::pt(a, b);};
   const double EPS = 1e-10;
   const double PI = acos(-1);
   pt cent(cir C) { return C.first; }
