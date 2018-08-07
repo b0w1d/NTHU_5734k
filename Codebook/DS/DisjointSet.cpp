@@ -1,12 +1,12 @@
 struct DisjointSet{
   // save() is like recursive
   // undo() is like return
-  int n;
+  int n, compo;
   vector<int> fa, sz;
   vector<pair<int*,int>> h;
   vector<int> sp;
   void init(int tn) {
-    n = tn, sz.assign(n, 1), fa.resize(n);
+    compo = n = tn, sz.assign(n, 1), fa.resize(n);
     for (int i = 0; i < n; ++i)
       fa[i] = i, sz[i] = 1;
     sp.clear(); h.clear();
@@ -34,6 +34,7 @@ struct DisjointSet{
     if (sz[x] < sz[y]) swap(x, y);
     assign(&sz[x], sz[x] + sz[y]);
     assign(&fa[y], x);
+    --compo;
     return true;
   }
 }djs;
