@@ -74,3 +74,14 @@ struct Rbst {
     while (mem_ptr != mem_pool) (--mem_ptr)->~Rbst();
   }
 } Rbst::mem_pool[RBST_MAX_NODES], *Rbst::mem_ptr = Rbst::mem_pool;
+
+/*
+Usage:
+
+Rbst *t = new(Rbst::mem_ptr++) Rbst(val);
+t = Rbst::merge(t, new(Rbst::mem_ptr++) Rbst(another_val));
+Rbst *a, *b;
+Rbst::split(t, 2, a, b); // a will have first 2 elements, b will have the rest, in order
+Rbst::clear(); // wipes out all memory; if you know the mechanism of clear() you can maintain many trees
+
+*/
