@@ -11,7 +11,6 @@ class biconnected_component {
 
   biconnected_component(int _n) : n(_n) {
     depth = vector<int>(n, -1);
-    pre.resize(n);
     g.resize(n);
   }
 
