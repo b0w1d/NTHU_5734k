@@ -23,6 +23,7 @@ struct seg{
     sum = ch[0] -> sum + ch[1] -> sum;
   }
   void add(int L, int R, LL val) {
+    if (L >= R) return;
     if (L <= l and r <= R)
       return sum += val * (r - l), lazy += val, void();
     else {
@@ -33,6 +34,7 @@ struct seg{
     }
   }
   LL query(int L, int R) {
+    if (L >= R) return 0;
     if (L <= l and r <= R) return sum;
     push();
     LL ans = 0;

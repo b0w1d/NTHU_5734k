@@ -1,4 +1,3 @@
-template <typename T>
 struct LIS { // STRICTLY INCREASING
   vector<T> A;
   int n;
@@ -11,7 +10,9 @@ struct LIS { // STRICTLY INCREASING
         min_with.push_back(i);
       }
       else {
-        int j = upper_bound(min_with.begin(), min_with.end(), i, [&](int i, int k) { return A[i] < A[k]; }) - min_with.begin();
+        int j = lower_bound(min_with.begin(), min_with.end(), i, [&](int i, int k) {
+          return A[i] < A[k];
+        }) - min_with.begin();
         pre[i] = j ? min_with[j - 1] : -1;
         min_with[j] = i;
       }
