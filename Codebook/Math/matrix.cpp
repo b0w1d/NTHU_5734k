@@ -93,31 +93,7 @@ Matrix operator^ (const Matrix &a, const int p) {
   return (res ^= p);
 }
 
-Matrix cofactor(int col, Matrix mat) {
-  Matrix res(mat.row - 1, mat.col - 1);
-  for (int i = 0, ii = 0; i < mat.row; i++) {
-    if (i == col) continue;
-    for (int j = 0; j < mat.col - 1; j++) {
-      res[j][ii] = mat[j + 1][i];
-    }
-    ii++;
-  }
-  return res;
-}
-
-int det(Matrix mat) {
-  assert(mat.row == mat.col);
-  if (mat.row == 1) return mat[0][0];
-  int res = 0, sign = 1;
-  for (int i = 0; i < mat.col; i++) {
-    res += sign * mat[0][i] * det(cofactor(i, mat));
-    sign *= -1;
-  }
-  return res;
-}
-
 /* =============================================================== */
-// TODO: gaussianEliminate
 
 int main() {
   Matrix mat(2, 3, -1);
@@ -125,8 +101,5 @@ int main() {
   Matrix id(2);
   Matrix ans = id * mat;
   cout << ans << "\n";
-  Matrix mat2(3);
-  cin >> mat2;
-  cout << det(mat2) << "\n";
   return 0;
 }
