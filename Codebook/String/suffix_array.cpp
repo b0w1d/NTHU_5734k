@@ -202,4 +202,4 @@ int sparse_rmq(int i, int j, const vector<int> &ra, const vector<vector<int>> &s
   if (ra[i] > ra[j]) swap(i, j);
   int k = 31 - __builtin_clz(ra[j] - ra[i]);
   return min(st[k][ra[i]], st[k][ra[j] - (1<<k)]);
-}
+}// sparse_rmq(sa[i], sa[j], ra, st) is the lcp of sa(i), sa(j)
