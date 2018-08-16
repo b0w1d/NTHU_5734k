@@ -33,14 +33,14 @@ class Matrix {
     return ele[i];
   }
 
-  Matrix& operator=(const Matrix &mat) {
+  Matrix& operator= (const Matrix &mat) {
     row = mat.row;
     col = mat.col;
     ele = mat.ele;
     return *this;
   }
 
-  Matrix& operator*=(const Matrix &mat) {
+  Matrix& operator*= (const Matrix &mat) {
     assert(col == mat.row);
     Matrix res(row, mat.col);
     for (int i = 0; i < row; i++) {
@@ -53,7 +53,7 @@ class Matrix {
     return *this = res;
   }
 
-  Matrix& operator^=(const int p) {
+  Matrix& operator^= (const int p) {
     assert(row == col && p >= 0);
     Matrix res(row);
     for (int i = p; i > 0; i /= 2) {
@@ -63,7 +63,7 @@ class Matrix {
     return *this = res;
   }
 
-  friend istream& operator>>(istream &is, Matrix &mat) {
+  friend istream& operator>> (istream &is, Matrix &mat) {
     for (int i = 0; i < mat.row; i++) {
       for (int j = 0; j < mat.col; j++) {
         is >> mat[i][j];
@@ -72,7 +72,7 @@ class Matrix {
     return is;
   }
 
-  friend ostream& operator<<(ostream &os, const Matrix &mat) {
+  friend ostream& operator<< (ostream &os, const Matrix &mat) {
     for (int i = 0; i < mat.row; i++) {
       for (int j = 0; j < mat.col; j++) {
         os << mat[i][j] << " ";
@@ -83,18 +83,41 @@ class Matrix {
   }
 };
 
-Matrix operator*(const Matrix &a, const Matrix &b) {
+Matrix operator* (const Matrix &a, const Matrix &b) {
   Matrix res(a);
   return (res *= b);
 }
 
-Matrix operator^(const Matrix &a, const int p) {
+Matrix operator^ (const Matrix &a, const int p) {
   Matrix res(a);
   return (res ^= p);
 }
 
-TODO: det / gaussianEliminate
+Matrix cofactor(int col, Matrix mat) {
+  Matrix res(mat.row - 1, mat.col - 1);
+  for (int i = 0, ii = 0; i < mat.row; i++) {
+    if (i == col) continue;
+    for (int j = 0; j < mat.col - 1; j++) {
+      res[j][ii] = mat[j + 1][i];
+    }
+    ii++;
+  }
+  return res;
+}
+
+int det(Matrix mat) {
+  assert(mat.row == mat.col);
+  if (mat.row == 1) return mat[0][0];
+  int res = 0, sign = 1;
+  for (int i = 0; i < mat.col; i++) {
+    res += sign * mat[0][i] * det(cofactor(i, mat));
+    sign *= -1;
+  }
+  return res;
+}
+
 /* =============================================================== */
+// TODO: gaussianEliminate
 
 int main() {
   Matrix mat(2, 3, -1);
@@ -102,5 +125,8 @@ int main() {
   Matrix id(2);
   Matrix ans = id * mat;
   cout << ans << "\n";
+  Matrix mat2(3);
+  cin >> mat2;
+  cout << det(mat2) << "\n";
   return 0;
 }
