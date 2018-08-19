@@ -3,6 +3,14 @@ vector<int> permutation_inverse(vector<int> P) {
   for (int i = 0; i < P.size(); ++i) ret[P[i]] = i;
   return ret;
 }
+vector<int> composite(vector<int> A, vector<int> B) {
+  // can be not a permuation, 0-index is require
+  assert(A.size() == B.size());
+  int n = A.size();
+  vector<int> ret(n);
+  for (int i = 0; i < n; ++i) ret[i] = A[B[i]];
+  return ret;
+}
 LL sort_and_inv_cnt(vector<int> &A, int s, int e) {
   if (e - s == 1) return 0;
   int m = s + e >> 1;
