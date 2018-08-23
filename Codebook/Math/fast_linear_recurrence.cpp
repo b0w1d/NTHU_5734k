@@ -2,8 +2,6 @@
 using namespace std;
 
 vector<int> fast_linear_recurrence(const vector<int> &t, long long p, int mod) { // O(lg(p) * t.size()**2)
-  assert(p > t.size());
-
   auto advance = [&](const vector<int> &u) {
     vector<int> v(t.size());
     v[0] = 1LL * u.back() * t[0] % mod;
