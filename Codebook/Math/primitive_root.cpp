@@ -1,26 +1,37 @@
-vector<LL> factor(LL N) {
-  vector<LL> ans;
-  for (LL p = 2, n = N; p * p <= n; ++p)
+vector<pair<LL, int>> factor(LL N) {
+  vector<pair<LL, int>> ans;
+  for (LL p = 2; p * p <= N; ++p)
     if (N % p == 0) {
-      ans.push_back(p);
-      while (N % p == 0) N /= p;
+      ans.emplace_back(p, 0);
+      while (N % p == 0) N /= p, ++ans.back().second;
     }
-  if (N != 1) ans.push_back(N);
+  if (N != 1) ans.emplace_back(N, 1);
   return ans;
 }
-LL find_root(LL p) {
-  LL ans = 1;
-  for (auto q: factor(p - 1)) {
-    LL a = rand() % (p - 1) + 1, b = (p - 1) / q;
-    while (powmod(a, b, p) == 1) a = rand() % (p - 1) + 1;
-    while (b % q == 0) b /= q;
-    ans = mul(ans, powmod(a, b, p), p); 
+LL phi(LL m) {
+  auto fac = factor(m);
+  auto LL_pow = [](LL p, int t) {
+    LL ans = 1;
+    for (LL cur = p; t; t >>= 1, cur *= cur) if (t&1) ans *= cur;
+    return ans;
+  };
+  return accumulate(fac.begin(), fac.end(), 1ll, [=](LL a, pair<LL, int> p_r) {
+    return a * (LL_pow(p_r.first, p_r.second) - LL_pow(p_r.first, p_r.second - 1));
+  });
+}
+LL order(LL x, LL m) {
+  LL ans = phi(m);
+  auto phi_fac = factor(ans);
+  for (auto P: phi_fac) {
+    LL p = P.first, t = P.second;
+    for (int i = 0; i < t; ++i) {
+      if (powmod(x, ans / p, m) == 1) ans /= p;
+      else break;
+    }
   }
   return ans;
 }
-bool is_root(LL a, LL p) {
-  for (auto q: factor(p - 1)) 
-    if (powmod(a, (p - 1) / q, p) == 1) 
-      return false;
-  return true;
+LL cycles(LL a, LL m) {
+  if (m == 1) return 1;
+  return phi(m) / order(a, m);
 }
