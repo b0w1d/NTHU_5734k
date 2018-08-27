@@ -2,7 +2,7 @@
 
 using namespace std;
 
-struct SCC {
+class SCC {
   public:
   vector< vector<int> > g, rg;
   vector<int> visit, was;
