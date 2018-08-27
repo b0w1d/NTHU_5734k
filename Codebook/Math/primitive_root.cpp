@@ -20,6 +20,7 @@ LL phi(LL m) {
   });
 }
 LL order(LL x, LL m) {
+  // assert(__gcd(x, m) == 1);
   LL ans = phi(m);
   auto phi_fac = factor(ans);
   for (auto P: phi_fac) {
