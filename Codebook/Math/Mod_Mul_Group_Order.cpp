@@ -22,8 +22,7 @@ LL phi(LL m) {
 LL order(LL x, LL m) {
   // assert(__gcd(x, m) == 1);
   LL ans = phi(m);
-  auto phi_fac = factor(ans);
-  for (auto P: phi_fac) {
+  for (auto P: factor(ans)) {
     LL p = P.first, t = P.second;
     for (int i = 0; i < t; ++i) {
       if (powmod(x, ans / p, m) == 1) ans /= p;
