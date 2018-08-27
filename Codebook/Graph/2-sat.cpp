@@ -64,7 +64,7 @@ class two_SAT {
     scc();
     for (int i = 0; i < n; i++) {
       if (id[i] == id[i + n]) return false;
-      res[i] = (id[i] > id[i + n]);
+      res[i] = (id[i] < id[i + n]);
     }
     return true;
   }
@@ -80,4 +80,6 @@ class two_SAT {
     if you want to set x = True, you can add (not X -> X)
     solve() return True if it exist at least one solution
     res[i] store one solution
+      false -> choose a
+      true -> choose a + n
 */
