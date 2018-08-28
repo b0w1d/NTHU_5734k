@@ -53,7 +53,7 @@ class SCC {
 };
 
 /*
-  Tarjan’s strongly connected components algorithm
+  Kosaraju's algorithm
   solve() return the number of scc
   node with same id[] belong the same scc
 */
