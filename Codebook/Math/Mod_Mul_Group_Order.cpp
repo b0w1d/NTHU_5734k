@@ -10,13 +10,8 @@ vector<pair<LL, int>> factor(LL N) {
 }
 LL phi(LL m) {
   auto fac = factor(m);
-  auto LL_pow = [](LL p, int t) {
-    LL ans = 1;
-    for (LL cur = p; t; t >>= 1, cur *= cur) if (t&1) ans *= cur;
-    return ans;
-  };
-  return accumulate(fac.begin(), fac.end(), 1ll, [=](LL a, pair<LL, int> p_r) {
-    return a * (LL_pow(p_r.first, p_r.second) - LL_pow(p_r.first, p_r.second - 1));
+  return accumulate(fac.begin(), fac.end(), m, [](LL a, pair<LL, int> p_r) {
+    return a / p_r.first * (p_r.first - 1);
   });
 }
 LL order(LL x, LL m) {
