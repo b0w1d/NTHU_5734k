@@ -1,4 +1,4 @@
-//based on Points.cpp
+#include "Points.cpp"
 template <typename T, typename Real = double>
 struct Line { // Seg
   Pt<T> p1, p2;
