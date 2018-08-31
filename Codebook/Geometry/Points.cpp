@@ -1,32 +1,29 @@
-template <class F>
+template <typename T>
 struct Pt {
-  F x, y;
+  T x, y;
   Pt() : x(0), y(0) {}
-  Pt(const F x, const F y) : x(x), y(y) {}
+  Pt(const T x, const T y) : x(x), y(y) {}
+  template <class F> operator Pt<F> () const {
+    return Pt<F>(static_cast<F>(x), static_cast<F>(y)); }
+  Pt& operator=(const Pt b) { return *this = b; }
+  Pt operator+(const Pt b) const { return Pt(x + b.x, y + b.y); }
+  Pt operator-(const Pt b) const { return Pt(x - b.x, y - b.y); }
+  Pt operator*(const T b) const { return Pt(x * b, y * b); }
+  template <class F> Pt<F> operator* (const F fac) {
+    return Pt<F>(x * fac, y * fac); }
+  template <class F> Pt<F> operator/ (const F fac) {
+    return Pt<F>(x / fac, y / fac); }
+  Pt operator/(const T b) const { return Pt(x / b, y / b); }
+  T operator&(const Pt b) const { return x * b.x + y * b.y; }
+  T operator^(const Pt b) const { return x * b.y - y * b.x; }
+  bool operator==(const Pt b) const { return x == b.x && y == b.y; }
 
-  template <class F1> explicit operator Pt<F1> () const {
-    return Pt<F1>(static_cast<F1>(x), static_cast<F1>(y)); }
-  template <class F1> Pt operator + (const Pt<F1> oth) {
-    return Pt<F1>(x + oth.x, y + oth.y); }
-  template <class F1> Pt operator - (const Pt<F1> oth) {
-    return Pt<F1>(x - oth.x, y - oth.y); }
-  template <class F1> Pt operator * (const F1 fac) {
-    return Pt<F1>(x * fac, y * fac); }
-  template <class F1> Pt operator / (const F1 fac) {
-    return Pt<F1>(x / fac, y / fac); }
-  template <class F1> F1 operator & (const Pt<F1> oth) {
-    return static_cast<F1>(x * oth.x + y * oth.y); }
-  template <class F1> F1 operator ^ (const Pt<F1> oth) {
-    return static_cast<F1>(x * oth.y - y * oth.x); }
+  Pt prep() const { return Pt(-y, x); }
+  T norm2() const { return *this & *this; }
+  double rad() const { return atan2(x, y); }
 
-  template <class F1> Pt& operator = (const Pt<F1> oth) {
-    return *this = (Pt<F1>) oth; }
-  template <class F1> Pt& operator += (const Pt<F1> oth) {
-    return *this = *this + oth; }
-  template <class F1> Pt& operator -= (const Pt<F1> oth) {
-    return *this = *this - oth; }
-  template <class F1> Pt& operator *= (const F1 fac) {
-    return *this = *this * fac; }
-  template <class F1> Pt& operator /= (const F1 fac) {
-    return *this = *this / fac; }
+  Pt& operator+=(const Pt b) { return *this = *this + b; }
+  Pt& operator-=(const Pt b) { return *this = *this - b; }
+  Pt& operator*=(const T fac) { return *this = *this * fac; }
+  Pt& operator/=(const T fac) { return *this = *this / fac; }
 };
