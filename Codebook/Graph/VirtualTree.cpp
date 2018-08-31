@@ -9,9 +9,10 @@ struct Oracle {
     dep.resize(g.size());
     par.assign(g.size(), vector<int>(lgn + 1, -1));
     dfn.resize(g.size());
-
+    
+    int t = 0;
     function<void(int, int)> dfs = [&](int u, int fa) {
-      static int t = 0;
+      // static int t = 0;
       dfn[u] = t++;
       if (~fa) dep[u] = dep[fa] + 1;
       par[u][0] = fa;
