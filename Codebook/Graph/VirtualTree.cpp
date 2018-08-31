@@ -41,7 +41,7 @@ struct Oracle {
   }
 };
 
-struct VirtualTree { // O(|C|lg|C|), C is the set of critical points
+struct VirtualTree { // O(|C|lg|G|), C is the set of critical points, G is nodes in original graph
   vector<int> cp; // index of critical points in original graph
   vector<vector<int>> g; // simplified tree, i.e. virtual tree
   vector<int> nodes; // i'th node in g has index nodes[i] in original graph 
