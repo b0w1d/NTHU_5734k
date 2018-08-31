@@ -41,11 +41,11 @@ struct Oracle {
   }
 };
 
-struct VirtualTree { // CF 613D
-  vector<int> cp;
-  vector<vector<int>> g;
-  vector<int> nodes;
-  map<int, int> mp;
+struct VirtualTree { // O(|C|lg|C|), C is the set of critical points
+  vector<int> cp; // index of critical points in original graph
+  vector<vector<int>> g; // simplified tree, i.e. virtual tree
+  vector<int> nodes; // i'th node in g has index nodes[i] in original graph 
+  map<int, int> mp; // inverse of nodes
 
   VirtualTree(const vector<int> &_cp, const Oracle &oracle) : cp(_cp) {
     sort(cp.begin(), cp.end(), [&](int u, int v) { return oracle.dfn[u] < oracle.dfn[v]; });
