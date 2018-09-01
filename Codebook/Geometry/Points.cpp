@@ -4,7 +4,7 @@ struct Pt {
   Pt() : x(0), y(0) {}
   Pt(const T x, const T y) : x(x), y(y) {}
   template <class F> operator Pt<F> () const {
-    return Pt<F>(static_cast<F>(x), static_cast<F>(y)); }
+    return Pt<F>((F)x, (F)y); }
   Pt& operator=(const Pt b) { return *this = b; }
   Pt operator+(const Pt b) const { return Pt(x + b.x, y + b.y); }
   Pt operator-(const Pt b) const { return Pt(x - b.x, y - b.y); }
