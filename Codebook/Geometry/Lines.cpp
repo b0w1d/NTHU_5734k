@@ -17,7 +17,7 @@ struct Line {
       if ((vec() & v1) <= 0) return v1.norm2();
       if ((vec() & v2) >= 0) return v2.norm2();
     }
-    return sqrt((vec()^v1).norm2() / (double) vec().norm2());
+    return (vec()^v1) / sqrt(vec().norm2());
   }
   bool is_seg_proper_intersection(const Line& l) const {
     T det1 = l.ori(p1) * l.ori(p2);
