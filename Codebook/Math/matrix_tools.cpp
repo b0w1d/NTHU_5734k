@@ -24,26 +24,22 @@ void print_mat(mat A) {
     for (int j = 0; j < A[i].size(); ++j)
       cout << A[i][j] << " \n"[j == A[i].size() - 1];
 }
-pair<LL, LL> Gaussian_elimination(mat &A) {
-  // upper triangular decomposition
-  assert(A[0].size() == A.size());
-  LL det = 1, rank = 0, n = A.size();
+pair<T, int> det_and_rank(vector<vector<T>> &A) {
+  auto is_zero = [](T x) { return abs(x) < 1e-8; };
+  int n = A.size(), rank = 0;
+  T det = 1;
   for (int i = 0; i < n; ++i) {
     int sw = find_if(A.begin() + i, A.end(),
-                     [=](vector<LL> col) { return col[i];}) - A.begin();
+    [=](vector<T> col) { return not is_zero(col[i]); }) - A.begin();
     if (sw == n) { det = 0; continue; }
-    if (sw != i) (det *= MOD - 1) %= MOD, swap(A[sw], A[i]);
-    for (int j = i + 1; j < n; ++j) {
-      if (A[j][i]) for (int k = n - 1; k >= i; --k) {
-        A[j][k] -= A[i][k] * powmod(A[j][i], MOD - 2, MOD) % MOD;
-        A[j][k] = (A[j][k] % MOD + MOD) % MOD;
-      }
-    }
+    if (sw != i) det = det * -1, swap(A[sw], A[i]);
+    for (int j = i + 1; j < n; ++j)
+      for (int k = n - 1; k >= i; --k)
+        A[j][k] = A[j][k] - A[i][k] * A[j][i] / A[i][i];
     det *= A[i][i], ++rank;
   }
-  return {det, rank};
+  return {det, rank};//fabs(det) < 1e-8;
 }
-typedef vector<vector<LL> > mat;
 LL permanent(mat A) {
   LL n = A.size(), ans = 0, *tmp = new LL[n], add;
   for (int pgray = 0, s = 1, gray, i; s < 1 << n; ++s) {
