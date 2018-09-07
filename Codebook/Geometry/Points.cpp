@@ -21,7 +21,7 @@ struct Pt {
   Pt prep() const { return Pt(-y, x); }
   T norm2() const { return *this & *this; }
   double rad() const { return atan2(x, y); }
-  double angle(Pt<int> a) {
+  double angle(Pt<T> a) {
     return acos((*this & a) / sqrt(norm2()) / sqrt(a.norm2())); }
   Pt<Real> rotate(double arg) {
     return Pt<Real>(cos(arg) * x - sin(arg) * y,

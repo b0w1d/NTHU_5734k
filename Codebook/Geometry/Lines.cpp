@@ -14,8 +14,8 @@ struct Line {
     Pt<T> v1 = p - p1;
     if (is_Seg) {
       Pt<T> v2 = p - p2;
-      if ((vec() & v1) <= 0) return v1.norm2();
-      if ((vec() & v2) >= 0) return v2.norm2();
+      if ((vec() & v1) <= 0) return abs(v1.norm2());
+      if ((vec() & v2) >= 0) return abs(v2.norm2());
     }
     return (vec()^v1) / sqrt(vec().norm2());
   }
