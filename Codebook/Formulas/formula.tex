@@ -4,15 +4,23 @@
 %\begin{document}
 
 \subsection{Pick's theorem}
-Pick's theorem provides a simple formula for calculating the area $A$ of this polygon in terms of the number $i$ of lattice points in the interior located in the polygon and the number $b$ of lattice points on the boundary placed on the polygon's perimeter:
-$$A = i + \frac{b}{2} - 1$$
+For a polygon: \\
+$A$: The area of the polygon \\
+$B$: Boundary Point: a lattice point on the polygon (including vertices)
+$I$: Interior Point: a lattice point in the polygon’s interior region
+$$A= I + \frac{B}{2} - 1$$
 
 \subsection{Graph Properties}
 \begin{enumerate}\itemsep = -5pt
 \item Euler's Formula $V-E+F=2$
 \item For a planar graph, $F=E-V+n+1$, n is the numbers of components
-\item For a planar graph, $E\leq 3V-6$
-For a connected graph $G$, let $I(G)$ be the size of maximum independent set, $M(G)$ be the size of maximum matching, $Cv(G)$ be the size of minimum vertex cover, $Ce(G)$ be the size of minimum edge cover。
+\item For a planar graph, $E\leq 3V-6$ \\
+
+For a connected graph $G$:
+$I(G)$: the size of maximum independent set
+$M(G)$: the size of maximum matching
+$Cv(G)$: be the size of minimum vertex cover
+$Ce(G)$: be the size of minimum edge cover
 \item For any connected graph:
   \begin{enumerate}\itemsep = -3pt
   \item $I(G)+Cv(G)=|V|$
@@ -22,43 +30,8 @@ For a connected graph $G$, let $I(G)$ be the size of maximum independent set, $M
   \begin{enumerate}\itemsep = -3pt
   \item $I(G)=Cv(G)$
   \item $M(G)=Ce(G)$
-% \end{enumerate}
-% \item 最大權閉合圖：
-%	\begin{enumerate}\itemsep = -3pt
-%	\item $C(u,V)=\infty ,(u,v)\in E$
-%	\item $C(S,v)=W_v ,W_v>0$
-%	\item $C(v,T)=-W_v ,W_v<0$
-%	\end{enumerate}
-%\item 最大密度子圖：
-%	\begin{enumerate}\itemsep = -3pt
-%	\item $C(u,v)=1 ,(u,v)\in E$
-%	\item $C(S,v)=U_v ,v \in V$
-%	\item $C(v,T)=U+2g-d_v ,v \in V$
-%	\end{enumerate}
-%\item 弦圖：
-%	\begin{enumerate}\itemsep = -3pt
-%	\item 完美消除序列從後往前依次給每個點染色，給每個點染上可以染的最小顏色
-%	\item 最大團大小=色數
-%	\item 最大獨立集:完美消除序列從前往後能選就選
-%	\item 最小團覆蓋:最大獨立集的點和他延伸的邊構成
-%	\item 區間圖是弦圖
-%	\item 區間圖的完美消除序列:將區間按造又端點由小到大排序
-%	\item 區間圖染色:用線段樹做
-	\end{enumerate}
+   \end{enumerate}
 \end{enumerate}
-\begin{lstlisting}[language=C++]
-double l=0,=m,stop=1.0/n/n;
-while(r-l>=stop){
-	double(mid);
-	if((n*m-sol.maxFlow(s,t))/2>eps)l=mid;
-	else r=mid;
-}
-build(l);
-sol.maxFlow(s,t);
-vector<int> ans;
-for(int i=1;i<=n;++i)
-	if(sol.vis[i])ans.push_back(i);
-\end{lstlisting}
 
 
 
@@ -71,34 +44,32 @@ for(int i=1;i<=n;++i)
 \end{enumerate}
 
 \subsection{Combinatorics}
+\DeclareRobustCommand{\stirling}{\genfrac\{\}{0pt}{}}
 \begin{enumerate}
 \itemsep = -3pt
-  \item $\text{Harmonic series } H_n = \ln(n) + \gamma + 1/(2n) - 1/(12n^2) + 1/(120n^4)$
-  \item $ \gamma = 0.57721566490153286060651209008240243104215$
   \item Gray Code: $=n\oplus (n>>1)$
-  \item Catalan Number: $\frac{C_{n}^{kn}}{n(k-1)+1}$，$C_{m}^{n}=\frac{n!}{m!(n-m)!}$
-  \item $\gamma(n + 1) = n!$
-  \item $H(n,m)\cong x_1+x_2\ldots +x_n=k, num=C_{k}^{n+k-1}$
-  \item $n!\approx \sqrt{2\pi n}  \left( \frac{n}{e} \right)^n$
-  \item Stirling number of $2^{nd}$ kind: $n$人分$k$組方法數目
+  \item Catalan Number: $$C_n =  \frac{1}{n + 1} \binom{2n}{n} = \frac{(2n)!}{n!(n + 1)!} = \prod_{k=2}^n \frac{n + k}{k}$$
+  \item $\Gamma(n + 1) = n!$
+  \item $n! \approx \sqrt{2\pi n}  \left( \frac{n}{e} \right)^n$
+  \item Stirling number of second kind: the number of ways to partition a set of n elements into k nonempty subsets.
 	\begin{enumerate}\itemsep = -2pt
-		\item $S(0,0)=S(n,n)=1$
-		\item $S(n,0)=0$
-		\item $S(n,k)=kS(n-1,k)+S(n-1,k-1)$
+		\item $\stirling{0}{0} = \stirling{n}{n}=1$
+		\item $\stirling{n}{0} = 0$
+		\item $\stirling{n}{k} = k\stirling{n - 1}{k} + \stirling{n - 1}{k - 1}$
 	\end{enumerate}
-  \item Bell number,$n$人分任意多組方法數目
+  \item Bell numbers count the possible partitions of a set:
 	\begin{enumerate}\itemsep = -2pt
 		\item $B_0=1$
-		\item $B_n=\sum_{i=0}^nS(n,i)$
+		\item $B_n=\sum_{k=0}^n\stirling{n}{k}$
 		\item $B_{n+1}=\sum_{k=0}^{n} C_k^n B_k$
-		\item $B_{p+n}\equiv B{_n}+B_{n+1} mod p$, p is prime
-		\item $B_{p^m+n}\equiv mB{_n}+B_{n+1} mod p$, p is prime
+		\item $B_{p+n}\equiv B{_n}+B_{n+1} \mod p$, p prime
+		\item $B_{p^m+n}\equiv mB{_n}+B_{n+1} \mod p$, p prime
 		\item From $B_0: 1,1,2,5,15,52,\\203,877,4140,21147,115975$
 	\end{enumerate}
-\item Derangement,錯排,沒有人在自己位置上
+\item Derangement
 	\begin{enumerate}\itemsep = -2pt
 		\item $D_n=n!(1-\frac{1}{1!}+\frac{1}{2!}-\frac{1}{3!}\ldots +(-1)^n\frac{1}{n!})$
-		\item $D_n=(n-1)(D_{n-1}+D_{n-2}),D_0=1,D_1=0$
+		\item $D_n=(n-1)(D_{n-1}+D_{n-2})$
 		\item From $D_0: 1,0,1,2,9,44,\\265,1854,14833,133496$
 	\end{enumerate}
 \item Binomial\ Equality
@@ -117,13 +88,13 @@ for(int i=1;i<=n;++i)
 \end{enumerate}
 
 
-\subsection{冪次,冪次和}
+\subsection{Sum of Powers}
 \begin{enumerate}\itemsep = -3pt
 	\item $a^b\%P=a^{b\% \varphi (p)+\varphi (p)},b\geq \varphi (p)$
 	\item $1^3+2^3+3^3+\ldots +n^3=\frac{n^4}{4}+\frac{n^3}{2}+\frac{n^2}{4}$
 	\item $1^4+2^4+3^4+\ldots +n^4=\frac{n^5}{5}+\frac{n^4}{2}+\frac{n^3}{3}-\frac{n}{30}$
 	\item $1^5+2^5+3^5+\ldots +n^5=\frac{n^6}{6}+\frac{n^5}{2}+\frac{5n^4}{12}-\frac{n^2}{12}$
-	\item $0^k+1^k+2^k+\ldots +n^k = P(k),P(k)=\frac{(n+1)^{k+1}-\sum_{i=0}^{k-1}C_i^{k+1}P(i)}{k+1},P(0)=n+1$
+	\item $0^k+1^k+2^k+\ldots +n^k = P_k,P_k=\frac{(n+1)^{k+1}-\sum_{i=0}^{k-1}C_i^{k+1}P(i)}{k+1},P_0=n+1$
 	\item $\sum_{k=0}^{m-1}k^n=\frac{1}{n+1}\sum_{k=0}^{n}C_k^{n+1}B_km^{n+1-k}$
 	\item $\sum_{j=0}^{m}C_j^{m+1}B_j=0,B_0=1$
 	\item 除了$B_1=-1/2$，剩下的奇數項都是$0$
@@ -134,10 +105,7 @@ for(int i=1;i<=n;++i)
 \begin{enumerate}\itemsep = -3pt
 	\item $|X/G| = \frac{1}{|G|}\sum_{g \in G}|X^g|$
 	\item $X^g=t^{c(g)}$
-	\item $G$表示有幾種轉法，$X^g$表示在那種轉法下，有幾種是會保持對稱的，$t$是顏色數，$c(g)$是循環節不動的面數。
-	\item 正立方體塗三顏色，轉0有$3^6$ 個元素不變，轉90有6種，每種有$3^3$不變，180有$3\times 3^4$，120(角)有$8\times 3^2$，180(邊)有$6\times 3^3$，全部$\frac{1}{24}\left(3^6+6\times 3^3 + 3 \times 3^4 + 8 \times 3^2 + 6 \times 3^3 \right) = 57$
 \end{enumerate}
-
 \subsection{Count on a tree}
 \begin{enumerate}\itemsep = -3pt
 	\item Rooted tree: $s_{n+1}=\frac{1}{n}\sum_{i=1}^{n}(i\times a_i\times \sum_{j=1}^{\left \lfloor  n/i\right \rfloor} a_{n+1-i\times j})$
@@ -149,7 +117,7 @@ for(int i=1;i<=n;++i)
 	\item Spanning Tree
 	\begin{enumerate}\itemsep = -2pt
 		\item 完全圖$n^n-2$
-		\item 一般圖(Kirchhoff's theorem)$M[i][i]=degree(V_i)$,$M[i][j]=-1$,if have $E(i,j)$,$0$ if no edge. delete any one row and col in $A$, $ans = det(A)$
+		\item 一般圖(Kirchhoff's theorem)$M[i][i]=\text{deg}(V_i)$,$M[i][j]=-1$,if have $E(i,j)$,$0$ if no edge. delete any one row and col in $A$, $ans = \det(A)$
 	\end{enumerate}
 \end{enumerate}
 

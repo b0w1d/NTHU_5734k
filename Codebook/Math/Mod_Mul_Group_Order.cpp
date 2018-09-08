@@ -1,13 +1,4 @@
-vector<pair<LL, int>> factor(LL N) {
-  vector<pair<LL, int>> ans;
-  for (LL p = 2; p * p <= N; ++p)
-    if (N % p == 0) {
-      ans.emplace_back(p, 0);
-      while (N % p == 0) N /= p, ++ans.back().second;
-    }
-  if (N != 1) ans.emplace_back(N, 1);
-  return ans;
-}
+#include "Miller_Rabin_with_Pollard_rho.cpp"
 LL phi(LL m) {
   auto fac = factor(m);
   return accumulate(fac.begin(), fac.end(), m, [](LL a, pair<LL, int> p_r) {

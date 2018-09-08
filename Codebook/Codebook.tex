@@ -1,20 +1,20 @@
 \documentclass[a4paper,10pt,twocolumn,oneside]{article}
-\setlength{\columnsep}{10pt}    
-\setlength{\columnseprule}{0pt} 
+\setlength{\columnsep}{10pt}       %distance between two column
+\setlength{\columnseprule}{0pt}   
 
 \usepackage{amsthm}								%定義，例題
+\usepackage{amsmath}
 \usepackage{amssymb}
 %\usepackage[margin=2cm]{geometry}
 \usepackage{fontspec}								%設定字體
 \usepackage{color}
 \usepackage[x11names]{xcolor}
 \usepackage{listings}								%顯示code用的
-%\usepackage[Glenn]{fncychap}						%排版，頁面模板
+%\usepackage[Glenn]{fncychap}				%排版，頁面模板
 \usepackage{fancyhdr}								%設定頁首頁尾
 \usepackage{graphicx}								%Graphic
 \usepackage{enumerate}
 \usepackage{titlesec}
-\usepackage{amsmath}
 \usepackage[CheckSingle, CJKmath]{xeCJK}
 % \usepackage{CJKulem}
 
@@ -38,8 +38,9 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\setmainfont{Lucida Grande}	
-\setmonofont{Monaco}	
+\setmainfont{Consolas}		
+\setmonofont{Monaco}
+\setCJKmainfont{Source Han Sans TC}
 %\setmainfont{sourcecodepro}
 \setcounter{secnumdepth}{3}
 
@@ -77,7 +78,7 @@ stringstyle=\itshape\color{Green4},
 \pagestyle{fancy}
 \fancyfoot{}
 %\fancyfoot[R]{\includegraphics[width=20pt]{ironwood.jpg}}
-\fancyhead[L]{NTHU\_5734k}
+\fancyhead[L]{NTHU\_5734}
 \fancyhead[R]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\contentsname}{Contents} 
