@@ -1,4 +1,4 @@
-class Rotating_point{
+class Rotating_axis{
   struct POINT{
     Pt<LL> p;
     int i;
@@ -13,7 +13,7 @@ class Rotating_point{
   vector<int> idx_at;
   int n, lid = 0;
 public:
-  Rotating_point(vector<Pt<LL>> V) {
+  Rotating_axis(vector<Pt<LL>> V) {
     n = V.size();
     Ps.resize(n), idx_at.resize(n);
     for (int i = 0; i < n; ++i) Ps[i] = {V[i], i};
@@ -40,5 +40,5 @@ public:
     return ++lid, true;
   }
   Pt<LL> at(size_t i) { return Ps[i].p; }
-  Line<LL> cur_line() { return Ls[lid].L; }
+  Line<LL> cur_axis() { return Ls[lid].L; }
 };
