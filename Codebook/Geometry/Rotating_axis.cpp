@@ -1,4 +1,4 @@
-class Rotating_axis{
+class Rotating_point{
   struct POINT{
     Pt<LL> p;
     int i;
@@ -13,7 +13,7 @@ class Rotating_axis{
   vector<int> idx_at;
   int n, lid = 0;
 public:
-  Rotating_axis(vector<Pt<LL>> V) {
+  Rotating_point(vector<Pt<LL>> V) {
     n = V.size();
     Ps.resize(n), idx_at.resize(n);
     for (int i = 0; i < n; ++i) Ps[i] = {V[i], i};
@@ -27,7 +27,7 @@ public:
     sort(Ps.begin(), Ps.end(), [&](POINT A, POINT B) {
       auto a = A.p, b = B.p;
       LL det1 = Ls[0].L.ori(a), det2 = Ls[0].L.ori(b);
-      return det1 == det2? ((a - b) & Ls[0].L.vec()) : det1 > det2;
+      return det1 == det2? ((a - b) & Ls[0].L.vec()) > 0 : det1 > det2;
     });
     for (int i = 0; i < n; ++i) idx_at[Ps[i].i] = i;
   }
@@ -36,6 +36,7 @@ public:
     int i = Ls[lid].i, j = Ls[lid].j, wi = idx_at[i], wj = idx_at[j];
     swap(Ps[wi], Ps[wj]);
     swap(idx_at[i], idx_at[j]);
+    assert(idx_at[i] == idx_at[j] - 1);
     return ++lid, true;
   }
   Pt<LL> at(size_t i) { return Ps[i].p; }
