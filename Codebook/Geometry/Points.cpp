@@ -20,7 +20,7 @@ struct Pt {
   Pt operator-() const { return Pt() - *this; }
   Pt prep() const { return Pt(-y, x); }
   T norm2() const { return *this & *this; }
-  double rad() const { return atan2(x, y); }
+  double rad() const { return atan2(y, x); }
   double angle(Pt<T> a) {
     return acos((*this & a) / sqrt(norm2()) / sqrt(a.norm2())); }
   Pt<Real> rotate(double arg) {
