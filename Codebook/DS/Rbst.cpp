@@ -68,6 +68,18 @@ struct Rbst {
       return b;
     }
   } // merges a and b, maintaing order
+  static int lower_bound(Rbst *t, const int &key) {
+    if (!t) return 0;
+    if (t->val >= key) return lower_bound(t->lc, key);
+    return get_size(t->lc) + 1 + lower_bound(t->rc, key);
+  }
+  static void insert(Rbst *&t, const int &key) {
+    int idx = lower_bound(t, key);
+    Rbst *tt;
+    split(t, idx, tt, t);
+    t = merge(merge(tt, new(mem_ptr++) Rbst(key)), t);
+  }
+
   static Rbst mem_pool[RBST_MAX_NODES]; // CAUTION!!
   static Rbst *mem_ptr;
   static void clear() {
