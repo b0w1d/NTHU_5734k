@@ -4,7 +4,14 @@ struct Poly{
   vector<Pt<T>> gon;
   Poly() {}
   Poly(vector<Pt<T>> V): gon(V) {}
+  void push_back(Pt<T> a) { gon.push_back(a); }
   Pt<T>& operator[](size_t k) { return gon[k]; }
+  T twice_area() {
+    if (gon.size() <= 2) return 0;
+    T ans = 0;
+    for (int i = 0; i < gon.size(); ++i) ans += gon[i] ^ gon[(i + 1) % gon.size()];
+    return ans;
+  }
   Poly get_hull() {
     auto p = gon;
     sort(p.begin(), p.end());

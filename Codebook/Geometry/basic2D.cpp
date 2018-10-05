@@ -151,32 +151,6 @@ namespace geo {
     }
     return ans;
   }
-  poly half_plane_intersection(vector<plane> A) {
-    const double INF = 1e19;
-    sort(A.begin(), A.end(), [=](plane a, plane b) {
-      int res = dcmp(arg(vec(a)) - arg(vec(b)));
-      return res == 0 ? is_point_in_plane(st(a), b) : res < 0;
-    });
-    deque<pt> ans;
-    deque<plane> q;
-    q.push_back(A[0]);
-    for (int i = 1; i < A.size(); ++i) {
-      if (dcmp(cross(vec(A[i]), vec(A[i - 1]))) == 0) continue;
-      while (ans.size() and not is_point_in_plane(ans.back(), A[i]))
-        q.pop_back(), ans.pop_back();
-      while (ans.size() and not is_point_in_plane(ans.front(), A[i]))
-        q.pop_front(), ans.pop_front();
-      ans.push_back(get_line_intersection(A[i], q.back()));
-      q.push_back(A[i]);
-    }
-    while (ans.size() and not is_point_in_plane(ans.back(), q.front()))
-      ans.pop_back(), q.pop_back();
-    while (ans.size() and not is_point_in_plane(ans.front(), q.back()))
-      ans.pop_front(), q.pop_front();
-    if (q.size() < 3) return {};
-    ans.push_back(get_line_intersection(q.back(), q.front()));
-    return poly(ans.begin(), ans.end());
-  }
   pair<pt, pt> closest_pair(vector<pt> &V, int l, int r) { // l = 0, r = V.size()
     pair<pt, pt> ret = {pt(-1e18), pt(1e18)};
     const auto upd = [&](pair<pt, pt> a) {
