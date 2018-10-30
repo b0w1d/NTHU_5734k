@@ -1,40 +1,36 @@
-struct DisjointSet{
-  // save() is like recursive
-  // undo() is like return
-  int n, compo;
-  vector<int> fa, sz;
-  vector<pair<int*,int>> h;
-  vector<int> sp;
-  void init(int tn) {
-    compo = n = tn, sz.assign(n, 1), fa.resize(n);
-    for (int i = 0; i < n; ++i)
-      fa[i] = i, sz[i] = 1;
-    sp.clear(); h.clear();
-  }
-  void assign(int *k, int v) {
-    h.push_back({k, *k});
-    *k = v;
-  }
-  void save() { sp.push_back(h.size()); }
-  void undo() {
-    assert(!sp.empty());
-    int last = sp.back(); sp.pop_back();
-    while (h.size() != last) {
-      auto x = h.back(); h.pop_back();
-      *x.first = x.second;
+struct Dsu {
+  struct node_struct {
+    int par, size;
+    node_struct(int p, int s) : par(p), size(s) {}
+    void merge(node_struct &b) {
+      b.par = par;
+      size += b.size;
     }
+  };
+  vector<node_struct> nodes;
+  stack<tuple<int, int, node_struct, node_struct>> stk;
+  Dsu(int n) {
+    nodes.reserve(n);
+    for (int i = 0; i < n; ++i) nodes.emplace_back(i, 1);
   }
-  int f(int x) {
-    while (fa[x] != x) x = fa[x];
+  int anc(int x) {
+    while (x != nodes[x].par) x = nodes[x].par;
     return x;
   }
-  bool uni(int x, int y) {
-    x = f(x), y = f(y);
-    if (x == y) return false;
-    if (sz[x] < sz[y]) swap(x, y);
-    assign(&sz[x], sz[x] + sz[y]);
-    assign(&fa[y], x);
-    --compo;
+  bool unite(int x, int y) {
+    int a = anc(x);
+    int b = anc(y);
+    stk.emplace(a, b, nodes[a], nodes[b]);
+    if (a == b) return false;
+    if (nodes[a].size < nodes[b].size) swap(a, b);
+    nodes[a].merge(nodes[b]);
     return true;
   }
-}djs;
+  void revert(int version = -1) {  // 0 index
+    if (version == -1) version = stk.size() - 1;
+    for (; stk.size() != version; stk.pop()) {
+      nodes[get<0>(stk.top())] = get<2>(stk.top());
+      nodes[get<1>(stk.top())] = get<3>(stk.top());
+    }
+  }
+};
