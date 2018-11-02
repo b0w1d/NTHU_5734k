@@ -56,4 +56,15 @@ struct MongeDP { // NOTE: if update like rolling dp, then enclose dp value in we
                          return abscub(A[rb - 1] - X[x]) + abscub(Y[x]);
                        });
   // mdp.ensure_monge_condition();
+  
+OR in case rolling dp, remember to remove dp[] in R.H.S. in lines 15, 20, 28 and do the following:
+  vector<int64_t> dp(N + 1, 1LL << 60);
+  dp[0] = 0;
+  for (int i = 1; i < G + 1; ++i) {
+    dp = MongeDP<int64_t>(N, [](int64_t x, int64_t y) { return x < y; },
+                         [&](int x, int rb) {
+                           return dp[x] + cost[x][rb];
+                         }).dp;
+  }
+
 */
