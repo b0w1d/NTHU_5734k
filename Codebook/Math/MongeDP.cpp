@@ -1,5 +1,5 @@
 template<typename R> // return_type
-struct MongeDP {
+struct MongeDP { // NOTE: if update like rolling dp, then enclose dp value in wei function and remove dp[] in R.H.S when updating stuff
   int n;
   vector<R> dp;
   vector<int> pre;
