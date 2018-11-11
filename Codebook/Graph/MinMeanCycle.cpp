@@ -9,8 +9,13 @@ struct MMC{
   Edge e[E];
   vector<int> edgeID, cycle, rho;
   double d[V][V];
-  void init( int _n )
-  { n = _n; m = 0; }
+  void init( int _n ) {
+    n = _n;
+    m = 0;
+    memset(prv, 0, sizeof(prv));
+    memset(prve, 0, sizeof(prve));
+    memset(vst, 0, sizeof(vst));
+  }
   // WARNING: TYPE matters
   void addEdge( int vi , int ui , double ci )
   { e[ m ++ ] = { vi , ui , ci }; }
