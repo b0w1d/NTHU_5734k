@@ -1,60 +1,81 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int N = 60;
-typedef long long LL;
+class MaxClique {
+ public:
+  static const int MV = 100;
 
-struct Bron_Kerbosch {
-  int n, res;
-  LL edge[N];
-  void init(int _n) {
-    n = _n;
-    for (int i = 0; i <= n; i++) edge[i] = 0;
+  int V;
+  int el[MV][MV / 30 + 1];
+  int dp[MV];
+  int ans;
+  int s[MV][MV / 30 + 1];
+  vector<int> sol;
+
+  void init(int v) {
+    V = v;
+    ans = 0;
+    memset(el, 0, sizeof(el));
+    memset(dp, 0, sizeof(dp));
   }
-  void add_edge(int u, int v) {
-    if ( u == v ) return;
-    edge[u] |= 1LL << v;
-    edge[v] |= 1LL << u;
+
+  /* Zero Base */
+  void addEdge(int u, int v) {
+    if (u > v) swap(u, v);
+    if (u == v) return;
+    el[u][v / 32] |= (1 << (v % 32));
   }
-  void go(LL R, LL P, LL X) {
-    if ( P == 0 && X == 0 ) {
-      res = max( res, __builtin_popcountll(R) ); // notice LL
-      return;
+
+  bool dfs(int v, int k) {
+    int c = 0, d = 0;
+    for (int i = 0; i < (V + 31) / 32; i++) {
+      s[k][i] = el[v][i];
+      if (k != 1) s[k][i] &= s[k - 1][i];
+      c += __builtin_popcount(s[k][i]);
     }
-    if ( __builtin_popcountll(R) + __builtin_popcountll(P) <= res ) return;
-    for (int i = 0; i <= n; i++) {
-      LL v = 1LL << i;
-      if ( P & v ) {
-        go( R | v, P & edge[i], X & edge[i] );
-        P &= ~v;
-        X |= v;
+    if (c == 0) {
+      if (k > ans) {
+        ans = k;
+        sol.clear();
+        sol.push_back(v);
+        return 1;
+      }
+      return 0;
+    }
+    for (int i = 0; i < (V + 31) / 32; i++) {
+      for (int a = s[k][i]; a; d++) {
+        if (k + (c - d) <= ans) return 0;
+        int lb = a & (-a), lg = 0;
+        a ^= lb;
+        while (lb != 1) {
+          lb = (unsigned int)(lb) >> 1;
+          lg++;
+        }
+        int u = i * 32 + lg;
+        if (k + dp[u] <= ans) return 0;
+        if (dfs(u, k + 1)) {
+          sol.push_back(v);
+          return 1;
+        }
       }
     }
+    return 0;
   }
-  int solve() {
-    res = 0;
-    go( 0LL, ( 1LL << (n+1) ) - 1, 0LL );
-    return res;
-  }
-/*  BronKerbosch1(R, P, X):
-      if P and X are both empty:
-        report R as a maximal clique
-      for each vertex v in P:
-        BronKerbosch1(R ⋃ {v}, P ⋂ N(v), X ⋂ N(v))
-        P := P \ {v}
-        X := X ⋃ {v}
-*/
-} MaxClique;
 
-int main() {
-  MaxClique.init(6);
-  MaxClique.add_edge(1,2);
-  MaxClique.add_edge(1,5);
-  MaxClique.add_edge(2,5);
-  MaxClique.add_edge(4,5);
-  MaxClique.add_edge(3,2);
-  MaxClique.add_edge(4,6);
-  MaxClique.add_edge(3,4);
-  cout << MaxClique.solve() << "\n";
-  return 0;
+  int solve() {
+    for (int i = V - 1; i >= 0; i--) {
+      dfs(i, 1);
+      dp[i] = ans;
+    }
+    return ans;
+  }
+};
+
+signed main() {
+  int N;
+  cin >> N;
+  MaxClique mc;
+  mc.init(N);
+  mc.addEdge(i, j);
+  cout << mc.solve() << endl;
 }
