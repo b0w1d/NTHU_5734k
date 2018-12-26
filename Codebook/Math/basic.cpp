@@ -1,4 +1,4 @@
-PLL exd_gcd(LL a, LL b) {
+PLL exd_gcd(LL a, LL b) { // what about b.zero? = =
   if (a % b == 0) return {0, 1};
   PLL T = exd_gcd(b, a % b);
   return {T.second, T.first - a / b * T.second};
