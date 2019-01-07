@@ -13,7 +13,7 @@ class Integration {
   }
   Double askArea(Double l, Double r, Double exceptArea) {
     Double m = (l + r) / 2, L = quadrature(l, m), R = quadrature(m, r);
-    if (exceptArea < 1e-15 or abs((L + R - exceptArea) / exceptArea) < 1e-6)
+    if (abs(L + R - exceptArea) < 1e-16)
       return L + R;
     else return askArea(l, m, L) + askArea(m, r, R);
   }
