@@ -12,7 +12,8 @@ class Integration {
   }
   Double askArea(Double l, Double r, Double exceptArea) {
     Double m = (l + r) / 2, L = quadrature(l, m), R = quadrature(m, r);
-    if (abs((L + R - exceptArea) / exceptArea) < 1e-3) return L + R;
+    if (exceptArea < 1e-20 or abs((L + R - exceptArea) / exceptArea) < 1e-6) 
+      return L + R;
     else return askArea(l, m, L) + askArea(m, r, R);
   }
 public:
@@ -27,9 +28,6 @@ public:
   }
 };
 int main() {
-  Integration formula([](long double t) {
-    return sqrt(1 - t * t);
-  });
+  Integration formula([](long double t) { return sqrt(1 - t * t); });
   cout << fixed << setprecision(20) << 2 * formula.intergal(-1, 1) << '\n';
 }
-
