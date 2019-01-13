@@ -1,105 +1,81 @@
 #include <bits/stdc++.h>
-
 using namespace std;
+const long long MOD = 1e9 + 7;
 
+template<typename F>
 class Matrix {
-  public:
-  int row, col;
-  vector< vector<int> > ele;
 
-  Matrix(int n) : row(n), col(n) { // Identity matrix
-    ele = vector< vector<int> >(n, vector<int>(n, 0));
-    for (int i = 0; i < n; i++) {
-      ele[i][i] = 1;
-    }
+  int rowNum, colNum;
+  vector<vector<F>> cell;
+
+public:
+
+  Matrix(int n) : rowNum(n), colNum(n) { // Identity matrix
+    cell = vector<vector<F>>(n, vector<F>(n, 0));
+    for (int i = 0; i < n; i++) cell[i][i] = (F) 1;
   }
 
-  Matrix(int n, int m, int fill = 0) : row(n), col(m) {
-    ele.resize(n);
-    for (int i = 0; i < n; i++) {
-      ele[i] = vector<int>(m, fill);
-    }
+  Matrix(int n, int m, int fill = 0) : rowNum(n), colNum(m) {
+    cell.assign(n, vector<F>(m, fill));
   }
 
-  Matrix(const Matrix &mat) : row(mat.row), col(mat.col) {
-    ele = mat.ele;
+  Matrix(const Matrix &mat) : rowNum(mat.rowNum), colNum(mat.colNum) { 
+    cell = mat.cell; 
   }
 
-  vector<int>& operator[] (int i) {
-    return ele[i];
-  }
+  vector<F>& operator[] (int i) { return cell[i]; }
 
-  const vector<int>& operator[] (int i) const {
-    return ele[i];
-  }
+  const vector<F>& operator[] (int i) const { return cell[i]; }
 
   Matrix& operator= (const Matrix &mat) {
-    row = mat.row;
-    col = mat.col;
-    ele = mat.ele;
+    rowNum = mat.rowNum;
+    colNum = mat.colNum;
+    cell = mat.cell;
     return *this;
   }
 
   Matrix& operator*= (const Matrix &mat) {
-    assert(col == mat.row);
-    Matrix res(row, mat.col);
-    for (int i = 0; i < row; i++) {
-      for (int j = 0; j < mat.col; j++) {
-        for (int k = 0; k < col; k++) {
-          res[i][j] += ele[i][k] * mat[k][j];
+    assert(colNum == mat.rowNum);
+    Matrix res(rowNum, mat.colNum);
+    for (int i = 0; i < rowNum; i++) {
+      for (int j = 0; j < mat.colNum; j++) {
+        for (int k = 0; k < colNum; k++) {
+          res[i][j] += cell[i][k] * mat[k][j];
         }
       }
     }
     return *this = res;
   }
 
-  Matrix& operator^= (const int p) {
-    assert(row == col && p >= 0);
-    Matrix res(row);
-    for (int i = p; i > 0; i /= 2) {
-      if (i & 1) res *= *this;
+  Matrix& operator^= (long long p) {
+    assert(rowNum == colNum && p >= 0);
+    Matrix res(rowNum);
+    for (; p; p >>= 1) {
+      if (p&1) res *= *this;
       *this *= *this;
     }
     return *this = res;
   }
 
   friend istream& operator>> (istream &is, Matrix &mat) {
-    for (int i = 0; i < mat.row; i++) {
-      for (int j = 0; j < mat.col; j++) {
+    for (int i = 0; i < mat.rowNum; i++) 
+      for (int j = 0; j < mat.colNum; j++) 
         is >> mat[i][j];
-      }
-    }
     return is;
   }
 
   friend ostream& operator<< (ostream &os, const Matrix &mat) {
-    for (int i = 0; i < mat.row; i++) {
-      for (int j = 0; j < mat.col; j++) {
-        os << mat[i][j] << " ";
-      }
-      os << "\n";
-    }
+    for (int i = 0; i < mat.rowNum; i++) 
+      for (int j = 0; j < mat.colNum; j++) 
+        os << mat[i][j] << " \n"[j == mat.colNum - 1];
     return os;
   }
+  Matrix operator* (const Matrix &b) {
+    Matrix res(*this);
+    return (res *= b);
+  }
+  Matrix operator^ (const long long p) {
+    Matrix res(*this);
+    return (res ^= p);
+  }
 };
-
-Matrix operator* (const Matrix &a, const Matrix &b) {
-  Matrix res(a);
-  return (res *= b);
-}
-
-Matrix operator^ (const Matrix &a, const int p) {
-  Matrix res(a);
-  return (res ^= p);
-}
-
-/* =============================================================== */
-
-int main() {
-  Matrix mat(2, 3, -1);
-  cout << mat << "\n";
-  Matrix id(2);
-  Matrix ans = id * mat;
-  cout << ans << "\n";
-  return 0;
-}
