@@ -107,6 +107,19 @@ public:
     for (int i = 0; i < n; ++i) trim(P[i] += oth[i]);
     return *this;
   }
+  Polynomial operator+(Polynomial oth) {
+    Polynomial cp = *this;
+    return cp += oth;
+  }
+  Polynomial& operator+=(int k) {
+    setCoefficient();
+    trim(P[0] += k);
+    return *this;
+  }
+  Polynomial operator+(int k) {
+    Polynomial cp = *this;
+    return cp += k;
+  }
   Polynomial& operator*=(Polynomial oth) {
     assert(oth.n == n);
     bool overFlow = degree() + oth.degree() >= n;
@@ -118,26 +131,21 @@ public:
       resize(n / 2), cerr << "Multiplication OverFlow, result modded by x^n\n";
     return *this;
   }
-  Polynomial operator*=(int k) {
-    for (int i = 0; i < n; ++i) P[i] = 1ll * P[i] * k % M;
-    return *this;
-  }
   Polynomial operator*(Polynomial oth) {
     Polynomial cp = *this;
     return cp *= oth;
+  }
+  Polynomial& operator*=(int k) {
+    for (int i = 0; i < n; ++i) P[i] = 1ll * P[i] * k % M;
+    return *this;
   }
   Polynomial operator*(int k) {
     Polynomial cp = *this;
     return cp *= k;
   }
-  Polynomial operator+(Polynomial oth) {
-    Polynomial cp = *this;
-    return cp + oth;
-  }
   Polynomial inverse() { // mod x^n
     setCoefficient();
-    Polynomial f = *this, h({powM(f[0], M - 2)}, M, R);
-    f.resize(n << 1), fill(f.P.begin() + n, f.P.end(), 0);
+    Polynomial h({powM(P[0], M - 2)}, M, R);
     for (int i = 1; i <= lg; ++i) {
       Polynomial curF(vector<int>(P.begin(), P.begin() + (1<<i)), M, R);
       h.resize(4<<i); fill(h.P.begin() + (1<<i), h.P.end(), 0);
@@ -152,15 +160,12 @@ public:
   }
   Polynomial sqrt() { // mod x^n
     setCoefficient();
-    Polynomial f = *this, h({discreteSqrt(f[0]), 0}, M, R);
-    f.resize(n << 1), fill(f.P.begin() + n, f.P.end(), 0);
+    Polynomial h({discreteSqrt(P[0]), 0}, M, R);
     for (int i = 1; i <= lg; ++i) {
       h.resize(2<<i);
       Polynomial curF(vector<int>(P.begin(), P.begin() + (1<<i)), M, R);
       curF.resize(2<<i);
-      curF *= h.inverse();
-      h += curF;
-      h *= powM(2, M - 2);
+      h = (h + curF * h.inverse()) * powM(2, M - 2);
     }
     h.resize(n);
     return h;
