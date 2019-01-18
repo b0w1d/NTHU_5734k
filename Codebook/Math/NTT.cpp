@@ -103,8 +103,8 @@ public:
   }
   Polynomial& operator+=(Polynomial oth) {
     assert(oth.n == n);
-    if (isPointValue != oth.isPointValue) NTT(isPointValue);
-    for (int i = 0; i < n; ++i) P[i] += oth[i];
+    if (isPointValue != oth.isPointValue) oth.NTT(oth.isPointValue);
+    for (int i = 0; i < n; ++i) trim(P[i] += oth[i]);
     return *this;
   }
   Polynomial& operator*=(Polynomial oth) {
