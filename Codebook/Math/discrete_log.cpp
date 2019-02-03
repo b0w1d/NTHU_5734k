@@ -17,7 +17,7 @@ LL discrete_log(LL b, LL p, LL n) {
 /*
   solve a ^ x = b (mod m)
   a ^ np = b * a ^ q
-  time: O(m log m)
+  time: O(sqrt(m) * log m)
 */
 int discrete_log(int a, int b) {
   int n = sqrt(md) + 1;
