@@ -1,25 +1,23 @@
 int discrete_kth_root(int n, int m, int p) { // x**n = m mod p
   int g = generator(p); // in most cases, do precalculate the generator
-
   int q = discrete_log(g, m, p);
   if (q == -1) return -1;
 
   int x, y, d;
   tie(x, y, d) = ext_gcd(n, p - 1);
-  
-  if (q % d) return -1;
+  if (q % d) return -1; // conclusion of no solution by ext_gcd
 
   int w = x;
-  if (w < 0) w = w % ((p - 1) / d) + (p - 1) / d;
-  
-  int r = 1;
+  if (w < 0) w = w % ((p - 1) / d) + (p - 1) / d; // normalize to non-negative
+
+  int r = 1; // g**q = g**(n*w') = (g**w')**n -> x = g**w'
   for (int64_t i = 1LL * q / d * w; i; i >>= 1) {
     if (i & 1) r = 1LL * r * g % p;
     g = 1LL * g * g % p;
   }
-
   return r;
 }
+
 // ---- end of O(sqrt(m) lg m) version ----
 
 
