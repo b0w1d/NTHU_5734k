@@ -11,3 +11,28 @@ LL discrete_log(LL b, LL p, LL n) {
 // find x s.t. b**x % p == n with complexity O(sqrt(N))
 // return the smallest
 // return -1 if ans doesn't exist
+
+// ---------------------------------------------------------------
+
+/*
+  solve a ^ x = b (mod m)
+  a ^ np = b * a ^ q
+  time: O(m log m)
+*/
+int discrete_log(int a, int b) {
+  int n = sqrt(md) + 1;
+  int an = power(a, n);
+
+  map<int,int> vals;
+  for (int p = 1, cur = an; p <= n; p++) {
+    vals[cur] = p;
+    cur = mul(cur, an);
+  }
+  for (int q = 0, cur = b; q < n; q++) {
+    if (vals.count(cur)) {
+      return vals[cur] * n - q;
+    }
+    cur = mul(cur, a);
+  }
+  return -1;
+}
