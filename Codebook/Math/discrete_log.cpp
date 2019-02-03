@@ -14,25 +14,20 @@ LL discrete_log(LL b, LL p, LL n) {
 
 // ---------------------------------------------------------------
 
-/*
-  solve a ^ x = b (mod m)
-  a ^ np = b * a ^ q
-  time: O(sqrt(m) * log m)
-*/
-int discrete_log(int a, int b) {
-  int n = sqrt(md) + 1;
-  int an = power(a, n);
-
-  map<int,int> vals;
-  for (int p = 1, cur = an; p <= n; p++) {
-    vals[cur] = p;
-    cur = mul(cur, an);
+int discrete_log(int a, int m, int p) { // a**x = m mod p
+  int magic = sqrt(p) + 2;
+  map<int, int> mp;
+  int x = 1;
+  for (int i = 0; i < magic; ++i) {
+    mp[x] = i;
+    x = 1LL * x * a % p;
   }
-  for (int q = 0, cur = b; q < n; q++) {
-    if (vals.count(cur)) {
-      return vals[cur] * n - q;
-    }
-    cur = mul(cur, a);
+  for (int i = 0, y = 1; i < magic; ++i) {
+    int inv = get<0>(ext_gcd(y, p));
+    if (inv < 0) inv += p;
+    int u = 1LL * m * inv % p;
+    if (mp.count(u)) return i * magic + mp[u];
+    y = 1LL * y * x % p;
   }
   return -1;
 }
