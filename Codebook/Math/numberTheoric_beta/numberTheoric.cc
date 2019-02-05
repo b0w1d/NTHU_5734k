@@ -1,6 +1,7 @@
 template<typename F>
 tuple<F, F, F> ext_gcd(F a, F b) {
-  if (!a or !b) return {a != 0, b != 0, a|b}; // true even if sign is negetive
+  if (!a) return {0, 1, b}; // true even if sign is negetive
+  if (!b) return {1, 0, a};
   F x, y, g;
   tie(x, y, g) = ext_gcd(b, a % b);
   return {y, x - a / b * y, g};
