@@ -14,7 +14,7 @@ struct Hashing { // As default, SIGMA = [a-z]
       return 1ll * prev * invQ % MOD;
     });
     for (int i = 0, col = 1; i < n; ++i, col = 1ll * col * Q % P)
-      H[i + 1] = (H[i] + 1ll * col * s[i]) %= P;
+      H[i + 1] = (H[i] + 1ll * col * s[i]) % P;
   }
   int get_hash(int l, int r) { // [l, r)
     return 1ll * (MOD + H[r] - H[l]) * q_inv[l] % MOD;
