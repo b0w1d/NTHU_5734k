@@ -1,40 +1,43 @@
-vector<int> adj[N];
-int p[N], vis[N];
-int sz[N], M[N]; // subtree size of u and M(u)
+struct CentroidDecomp {
+  vector<vector<int>> g;
+  vector<int> p, M, sz; 
+  vector<bool> vis;
+  int n;
 
-inline void maxify(int &x, int y) { x = max(x, y); }
-int centroidDecomp(int x) {
-  vector<int> q;
-  { // bfs
-    size_t pt = 0;
-    q.push_back(x);
-    p[x] = -1;
-    while (pt < q.size()) {
-      int now = q[pt++];
-      sz[now] = 1;
-      M[now] = 0;
-      for (auto &nxt : adj[now])
-        if (!vis[nxt] && nxt != p[now])
-          q.push_back(nxt), p[nxt] = now;
-    }
+  CentroidDecomp(vector<vector<int>> g) : g(g), n(g.size()) {
+    p.resize(n);
+    vis.assign(n, false);
+    sz.resize(n);
+    M.resize(n);
   }
 
-  // calculate subtree size in reverse order
-  reverse(q.begin(), q.end());
-  for (int &nd : q)
-    if (p[nd] != -1) {
-      sz[p[nd]] += sz[nd];
-      maxify(M[p[nd]], sz[nd]);
+  int divideAndConquer(int x) {
+
+    vector<int> q = {x};
+    p[x] = x;
+
+    for (int i = 0; i < q.size(); ++i) {
+      int u = q[i];
+      sz[u] = 1;
+      M[u] = 0;
+      for (auto v : g[u]) if (not vis[v] and v != p[u]) {
+        q.push_back(v), p[v] = u;
+      }
     }
-  for (int &nd : q)
-    maxify(M[nd], (int)q.size() - sz[nd]);
 
-  // find centroid
-  int centroid = *min_element(q.begin(), q.end(),
-                              [&](int x, int y) { return M[x] < M[y]; });
+    reverse(begin(q), end(q));
+    for (int u : q) if (p[u] != u) {
+      sz[p[u]] += sz[u];
+      M[p[u]] = max(sz[u], M[p[u]]);
+    }
 
-  vis[centroid] = 1;
-  for (auto &nxt : adj[centroid]) if (!vis[nxt])
-    centroidDecomp(nxt);
-  return centroid;
-}
+    for (int u : q) M[u] = max(M[u], int(q.size()) - sz[u]);
+
+    int cent = *min_element(begin(q), end(q), 
+                            [&](int x, int y) { return M[x] < M[y]; });
+
+    vis[cent] = true;
+    for (int u : g[cent]) if (not vis[u]) divideAndConquer(u);
+    return cent;
+  }
+};
