@@ -1,18 +1,18 @@
 // -----------O(NlgNlgN)----------
-pair<vector<int>, vector<int>> sa_db(const string s) {
+vector<int> sa_db(const string &s) {
   int n = s.size();
-  vector<int> sa(n), ra(n), t(n);
-  for (int i = 0; i < n; ++i) ra[sa[i] = i] = s[i];
+  vector<int> sa(n), r(n), t(n);
+  for (int i = 0; i < n; ++i) r[sa[i] = i] = s[i];
   for (int h = 1; t[n - 1] != n - 1; h *= 2) {
     auto cmp = [&](int i, int j) {
-      if (ra[i] != ra[j]) return ra[i] < ra[j];
-      return i + h < n && j + h < n ? ra[i + h] < ra[j + h] : i > j;
+      if (r[i] != r[j]) return r[i] < r[j];
+      return i + h < n && j + h < n ? r[i + h] < r[j + h] : i > j;
     };
     sort(sa.begin(), sa.end(), cmp);
     for (int i = 0; i + 1 < n; ++i) t[i + 1] = t[i] + cmp(sa[i], sa[i + 1]);
-    for (int i = 0; i < n; ++i) ra[sa[i]] = t[i];
+    for (int i = 0; i < n; ++i) r[sa[i]] = t[i];
   }
-  return {sa, ra};
+  return sa;
 }
 
 // O(N) -- CF: 1e6->31ms,18MB;1e7->296ms;158MB;3e7->856ms,471MB
@@ -128,18 +128,19 @@ vector<int> sa_is(const T &s, int sigma = 256) {
 } // s must end in char(0)
 
 // O(N) lcp, note that s must end in '\0'
-vector<int> build_lcp(string &s, vector<int> &sa, vector<int> &ra) {
+vector<int> build_lcp(const string &s, const vector<int> &sa, const vector<int> &rank) {
   int n = s.size();
   vector<int> lcp(n);
   for (int i = 0, h = 0; i < n; ++i) {
-    if (ra[i] == 0) continue;
+    if (rank[i] == 0) continue;
+    int j = sa[rank[i] - 1];
     if (h > 0) --h;
-    for (int j = sa[ra[i] - 1]; max(j, i) + h < n; ++h) {
+    for ( ; j + h < n && i + h < n; ++h) {
       if (s[j + h] != s[i + h]) break;
     }
-    lcp[ra[i] - 1] = h;
+    lcp[rank[i] - 1] = h;
   }
-  return lcp; // lcp[i] := LCP(s[sa[i]], s[sa[i + 1]])
+  return lcp; // lcp[i] := lcp(s[sa[i]..-1], s[sa[i + 1]..-1])
 }
 
 // O(N) build segment tree for lcp
@@ -175,31 +176,3 @@ int match(const string &p, const string &s, const vector<int> &sa, const vector<
   if (lcplp < p.size()) return -1;
   return sa[lb];
 }
-
-int LCA(int i, int j, const vector<int> &ra, const vector<int> &lcp_seg) {
-  // lca of ith and jth suffix
-  if (ra[i] > ra[j]) swap(i, j);
-  function<int(int, int, int, int, int)> query = [&](int L, int R, int l, int r, int v) {
-    if (L <= l and r <= R) return lcp_seg[v];
-    int m = l + r >> 1, ans = 1e9;
-    if (L < m) ans = min(ans, query(L, R, l, m, v << 1));
-    if (m < R) ans = min(ans, query(L, R, m, r, v << 1|1));
-    return ans;
-  };
-  return query(ra[i], ra[j], 0, ra.size(), 1);
-}
-vector<vector<int>> build_lcp_sparse_table(const vector<int> &lcp) {
-  int n = lcp.size(), lg = 31 - __builtin_clz(n);
-  vector<vector<int>> st(lg + 1, vector<int>(n));
-  for (int i = 0; i < n; ++i) st[0][i] = lcp[i];
-  for (int j = 1; (1<<j) <= n; ++j)
-    for (int i = 0; i + (1<<j) <= n; ++i)
-      st[j][i] = min(st[j - 1][i], st[j - 1][i + (1<<(j - 1))]);
-  return st;
-}
-int sparse_rmq(int i, int j, const vector<int> &ra, const vector<vector<int>> &st) {
-  int n = st[0].size();
-  if (ra[i] > ra[j]) swap(i, j);
-  int k = 31 - __builtin_clz(ra[j] - ra[i]);
-  return min(st[k][ra[i]], st[k][ra[j] - (1<<k)]);
-}// sparse_rmq(sa[i], sa[j], ra, st) is the lcp of sa(i), sa(j)
