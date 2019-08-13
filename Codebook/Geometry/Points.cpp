@@ -25,3 +25,9 @@ struct Pt {
   T norm() const { return *this & *this; }
   Pt prep() const { return Pt(-y, x); }
 };
+template<class F> istream& operator>>(istream& is, Pt<F> &pt) {
+  return is >> pt.x >> pt.y;
+}
+template<class F> ostream& operator<<(ostream& os, Pt<F> &pt) {
+  return os << pt.x << ' ' << pt.y;
+}
