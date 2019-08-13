@@ -1,18 +1,11 @@
-#include <bits/stdc++.h>
-using namespace std;
-const long long MOD = 1e9 + 7;
-
 template<typename F>
-class Matrix {
-
+struct Matrix {
   int rowNum, colNum;
   vector<vector<F>> cell;
 
-public:
-
   Matrix(int n) : rowNum(n), colNum(n) { // Identity matrix
     cell = vector<vector<F>>(n, vector<F>(n, 0));
-    for (int i = 0; i < n; i++) cell[i][i] = (F) 1;
+    for (int i = 0; i < n; i++) cell[i][i] = F(1);
   }
 
   Matrix(int n, int m, int fill = 0) : rowNum(n), colNum(m) {
@@ -70,10 +63,12 @@ public:
         os << mat[i][j] << " \n"[j == mat.colNum - 1];
     return os;
   }
+
   Matrix operator* (const Matrix &b) {
     Matrix res(*this);
     return (res *= b);
   }
+
   Matrix operator^ (const long long p) {
     Matrix res(*this);
     return (res ^= p);
