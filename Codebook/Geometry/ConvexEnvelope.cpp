@@ -1,25 +1,27 @@
+using F = long long;
 struct Line {
   static const F QUERY = numeric_limits<F>::max();
   F m, b;
   Line(F m, F b) : m(m), b(b) {}
   mutable function<const Line*()> succ;
   bool operator<(const Line& rhs) const {
-    if (rhs.b != QUERY) return m < rhs.m;
+    if (rhs.b != QUERY) return m == rhs.m ? b < rhs.b : m < rhs.m;
     const Line* s = succ();
-    F x = rhs.m;
-    return s and b - s->b < (s->m - m) * x;
+    return s and b - s->b < (s->m - m) * rhs.m;
   }
   F operator()(F x) const { return m * x + b; };
 };
- 
+
 struct HullDynamic : public multiset<Line> {
-  F ceil2(F a, F b) { return a >= 0 ? (a + b - 1) / b : a / b; };
-  bool isOnHull(iterator y) {
+  bool isOnHull(iterator y) { //Mathematically, Strictly
     auto z = next(y);
     if (y == begin()) return z == end() or y->m != z->m or z->b < y->b;
     auto x = prev(y);
     if (z == end()) return x->m != y->m or x->b < y->b;
-    return ceil2(x->b - y->b, y->m - x->m) < ceil2(y->b - z->b, z->m - y->m);
+    if (y->m == z->m) return y->b > z->b;
+    if (x->m == y->m) return x->b < y->b;
+    return (x->b - y->b) * (z->m - y->m) < (y->b - z->b) * (y->m - x->m);
+    // Beware long long overflow
   }
   void insertLine(F m, F b) {
     auto y = insert(Line(m, b));
