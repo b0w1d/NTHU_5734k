@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
-
 template<typename F = long long>
 struct Linear { // y = a * x + b;
   F a, b;
@@ -11,7 +7,6 @@ struct Linear { // y = a * x + b;
   }
   template<typename T> T operator()(T x) const { return a * x + b; }
 };
-
 
 template<typename F = long long>
 class ConvexHull { // lower envelop
@@ -60,7 +55,6 @@ public:
   }
 };
 
-
 template<typename F>
 class ExpandableHull {
   vector<ConvexHull<F>> stk;
@@ -80,21 +74,3 @@ public:
     });
   }
 };
-
-
-int main() {
-  ios_base::sync_with_stdio(false); cin.tie(0);
-
-  vector<Linear<int>> A;
-  A.emplace_back(2, 3);
-  A.emplace_back(4, 5);
-  ConvexHull<int> h(A); // build convex hull from array A
-  cout << h(6) << '\n'; // query max(2 * 6 + 3, 4 * 6 + 5); 
-
-  ExpandableHull<int> U;
-  U.addLine(Linear<int>(2, 3)); // add line f(x) = 2 * x + 3 to convex hull
-  cout << U(6) << '\n'; // query 
-  U.addLine(Linear<int>(4, 5)); // add line f(x) = 4 * x + 5 to convex hull
-  cout << U(6) << '\n'; // query 
-
-}
