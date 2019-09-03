@@ -1,108 +1,101 @@
-const int MXN = 100005;
-const int MEM = 100005;
-struct Splay {
-  static Splay nil, mem[MEM], *pmem;
-  Splay *ch[2], *f;
-  int val, rev, size;
-  Splay (int _val=-1) : val(_val), rev(0), size(1)
-  { f = ch[0] = ch[1] = &nil; }
-  bool isr()
-  { return f->ch[0] != this && f->ch[1] != this; }
-  int dir()
-  { return f->ch[0] == this ? 0 : 1; }
-  void setCh(Splay *c, int d){
-    ch[d] = c;
-    if (c != &nil) c->f = this;
-    pull();
+const int MEM = 1<<18;
+struct Node {
+  static Node mem[MEM], *pmem;
+  Node *ch[2], *f;
+  int id, size, revTag = 0, val = 0, sum = 0;
+  void reverse() { swap(ch[0], ch[1]), revTag ^= 1; }
+  void push() {
+    if (revTag) {
+      for (int i : {0, 1}) if (ch[i]) ch[i]->reverse();
+      revTag = 0;
+    }
   }
-  void push(){
-    if( !rev ) return;
-    swap(ch[0], ch[1]);
-    if (ch[0] != &nil) ch[0]->rev ^= 1;
-    if (ch[1] != &nil) ch[1]->rev ^= 1;
-    rev=0;
+  void pull() {
+    size = (ch[0] ? ch[0]->size : 0) + (ch[1] ? ch[1]->size : 0) + 1;
+    sum = val;
+    for (int i : {0, 1}) if (ch[i]) ch[i]->f = this, sum ^= ch[i]->sum;
   }
-  void pull(){
-    size = ch[0]->size + ch[1]->size + 1;
-    if (ch[0] != &nil) ch[0]->f = this;
-    if (ch[1] != &nil) ch[1]->f = this;
+  int dir() { return f->ch[1] == this; }
+  Node () : id(-1), size(0) { f = ch[0] = ch[1] = nullptr; }
+  Node (int id, int _val = 0) : id(id), size(1) {
+    val = sum = _val;
+    f = ch[0] = ch[1] = nullptr;
   }
-} Splay::nil, Splay::mem[MEM], *Splay::pmem = Splay::mem;
-Splay *nil = &Splay::nil;
-void rotate(Splay *x){
-  Splay *p = x->f;
-  int d = x->dir();
-  if (!p->isr()) p->f->setCh(x, p->dir());
-  else x->f = p->f;
-	p->setCh(x->ch[!d], d);
-  x->setCh(p, !d);
-	p->pull(); x->pull();
-}
-vector<Splay*> splayVec;
-void splay(Splay *x){
-  splayVec.clear();
-  for (Splay *q=x;; q=q->f){
-    splayVec.push_back(q);
-    if (q->isr()) break;
+  bool isRoot() {
+    return f == nullptr or f->ch[dir()] != this;
+  } // is root of current splay
+  void rotate() {
+    Node* u = f;
+    f = u->f;
+    if (not u->isRoot()) u->f->ch[u->dir()] = this;
+    int d = this == u->ch[0];
+    u->ch[!d] = ch[d], ch[d] = u;
+    u->pull(), pull();
   }
-  reverse(begin(splayVec), end(splayVec));
-  for (auto it : splayVec) it->push();
-  while (!x->isr()) {
-    if (x->f->isr()) rotate(x);
-    else if (x->dir()==x->f->dir())
-      rotate(x->f),rotate(x);
-    else rotate(x),rotate(x);
+  void splay() {
+    auto v = this;
+    if (v == nullptr) return;
+    {
+      vector<Node*> st;
+      Node* u = v;
+      st.push_back(u);
+      while (not u->isRoot()) st.push_back(u = u->f);
+      while (st.size()) st.back()->push(), st.pop_back();
+    }
+    while (not v->isRoot()) {
+      Node* u = v->f;
+      if (not u->isRoot()) {
+        (((u->ch[0] == v) xor (u->f->ch[0] == u)) ? v : u)->rotate();
+      }
+      v->rotate();
+    } v->pull();
   }
-}
-int id(Splay *x) { return x - Splay::mem + 1; }
-Splay* access(Splay *x){
-  Splay *q = nil;
-  for (;x!=nil;x=x->f){
-    splay(x);
-    x->setCh(q, 1);
-    q = x;
+  // Splay feature above
+  void access() {
+    for (Node *u = nullptr, *v = this; v != nullptr; u = v, v = v->f)
+      v->splay(), v->ch[1] = u, v->pull();
   }
-  return q;
-}
-void chroot(Splay *x){
-  access(x);
-  splay(x);
-  x->rev ^= 1;
-  x->push(); x->pull();
-}
-void link(Splay *x, Splay *y){
-  access(x);
-  splay(x);
-  chroot(y);
-  x->setCh(y, 1);
-}
-void cut_p(Splay *y) {
-  access(y);
-  splay(y);
-  y->push();
-  y->ch[0] = y->ch[0]->f = nil;
-}
-void cut(Splay *x, Splay *y){
-  chroot(x);
-  cut_p(y);
-}
-Splay* get_root(Splay *x) {
-  access(x);
-  splay(x);
-  for(; x->ch[0] != nil; x = x->ch[0])
-    x->push();
-  splay(x);
-  return x;
-}
-bool conn(Splay *x, Splay *y) {
-  x = get_root(x);
-  y = get_root(y);
-  return x == y;
-}
-Splay* lca(Splay *x, Splay *y) {
-  access(x);
-  access(y);
-  splay(x);
-  if (x->f == nil) return x;
-  else return x->f;
-}
+  Node* findroot() {
+    access(), splay();
+    auto v = this;
+    while (v->ch[0] != nullptr) v = v->ch[0];
+    v->splay(); // for complexity assertion
+    return v;
+  }
+  void makeroot() { access(), splay(), reverse(); }
+  static void split(Node* x, Node* y) { x->makeroot(), y->access(), y->splay(); }
+  static bool link(Node* x, Node* p) {
+    x->makeroot();
+    if (p->findroot() != x) return x->f = p, true;
+    else return false;
+  }
+  static void cut(Node* x) { 
+    x->access(), x->splay(), x->push(), x->ch[0] = x->ch[0]->f = nullptr;
+  }
+  static bool cut(Node* x, Node* p) { // make sure that p is above x
+    auto rt = x->findroot();
+    x->makeroot();
+    bool test = false;
+    if (p->findroot() == x and p->f == x and not p->ch[0]) {
+      p->f = x->ch[1] = nullptr, x->pull();
+      test = true;
+    }
+    rt->makeroot();
+    return test;
+  }
+  static int path(Node* x, Node* y) { // sum of value on path x-y
+    auto tmp = x->findroot();
+    split(x, y);
+    int ret = y->sum;
+    tmp->makeroot();
+    return ret;
+  }
+  static Node* lca(Node* x, Node* y) {
+    x->access(), y->access();
+    y->splay();
+    if (x->f == nullptr) return x;
+    else return x->f;
+  }
+} Node::mem[MEM], *Node::pmem = Node::mem;
+
+Node* vt[MEM];
