@@ -119,8 +119,8 @@
 \lstinputlisting{Graph/MinMeanCycle.cpp}
 \subsection{Prufer code}
 \lstinputlisting{Graph/Prufer_code.cpp}
-%\subsection{Tree ecc}
-%\lstinputlisting{Graph/Tree_ecc.cpp}
+\subsection{Tree ecc}
+\lstinputlisting{Graph/Tree_ecc.cpp}
 \subsection{Virtual Tree}
 \lstinputlisting{Graph/VirtualTree.cpp}
 \subsection{Graph Sequence Test}
