@@ -7,15 +7,15 @@ struct Segt {
   FTE fte;
   FTT ftt;
   FEE fee;
-  Segt(E ei, T ti, FTE a, FTT b, FEE c) : ei(ei), ti(ti), fte(a), ftt(b), fee(c){
-    dat.assign(2 * n, ei);
+  Segt(E ei, T ti, FTE a, FTT b, FEE c, const vector<E> &es) : ei(ei), ti(ti), fte(a), ftt(b), fee(c) {
     tag.assign(2 * n, ti);
-  }
-  void build(vector<E> a) {
-    for (int i = 0; i < a.size(); ++i) dat[n + i] = a[i];
+    dat.resize(2 * n);
+    for (int i = 0; i < es.size(); ++i) dat[n + i] = es[i];
+    for (int i = es.size(); i < n; ++i) dat[n + i] = ei;
     for (int i = n - 1; i; --i) dat[i] = fee(dat[i << 1], dat[i << 1 | 1]);
   }
   void push(int k) {
+    if (tag[k] == ti) return;
     for (int c = 0; c < 2; ++c) {
       tag[k << 1 | c] = ftt(tag[k], tag[k << 1 | c]);
       dat[k << 1 | c] = fte(tag[k], dat[k << 1 | c]);
